@@ -301,6 +301,10 @@ section {
         gap: 1rem;
     }
 
+    .hero {
+        margin-top: 120px;
+    }
+
     .hero-title {
         font-size: 2rem;
     }
