@@ -1,0 +1,543 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import headzoneIcon from '../assets/headzone-icon.png';
+import headzoneText from '../assets/headzone-logo.svg';
+import screenshot1 from '../assets/screenshot-1.png';
+import screenshot2 from '../assets/screenshot-2.png';
+import screenshot4 from '../assets/screenshot-4.png';
+import screenshot5 from '../assets/screenshot-5.png';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, 'apps');
+---
+
+<Layout 
+  title={`${t("Our Apps")} - Art is the Game`}
+  description={t("Innovative iOS applications designed to enhance your daily life")}
+  currentPage="apps"
+  lang={lang}
+>
+  <div class="apps-page">
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+      <div class="container">
+        <h1 class="page-title">{t("Our Apps")}</h1>
+        <p class="page-subtitle">{t("Innovative iOS applications designed to enhance your daily life")}</p>
+      </div>
+    </section>
+
+    <!-- Featured App: Headzone -->
+    <section class="featured-app slide-up">
+      <div class="container">
+        <div class="app-showcase">
+          <div class="app-info">
+            <div class="app-header">
+              <div class="app-icon">
+                <img src={headzoneIcon.src} alt={t("Headzone")} class="app-icon-img" />
+              </div>
+              <div class="app-meta">
+                <h2 class="app-title">{t("Headzone")}</h2>
+                <p class="app-category">{t("Health & Fitness")}</p>
+                <div class="app-rating">
+                  <div class="stars">⭐⭐⭐⭐⭐</div>
+                  <span class="rating-text">{t("5.0 (2 Reviews)")}</span>
+                </div>
+              </div>
+            </div>
+            
+            <p class="app-description">
+              {t("Headzone is specially designed to foster better focus skills using a technique practiced by coaches and sport psychologists for years - concentration grids! Build your mental discipline and learn to maintain focus in distracting environments.")}
+            </p>
+
+            <div class="app-features">
+              <h3>{t("Key Features")}</h3>
+              <ul>
+                <li>{t("Concentration grid training exercises")}</li>
+                <li>{t("Increased awareness of lost focus")}</li>
+                <li>{t("Alternative approach to mindfulness")}</li>
+                <li>{t("Learn to recover and regain focus quickly")}</li>
+                <li>{t("Stay calm in distracting environments")}</li>
+                <li>{t("Build mental skills and discipline")}</li>
+                <li>{t("New scoring system with profile dashboard")}</li>
+                <li>{t("Session history synchronization")}</li>
+                <li>{t("Precise volume controls")}</li>
+              </ul>
+            </div>
+
+            <div class="app-details">
+              <div class="detail-item">
+                <span class="label">{t("Developer:")}</span>
+                <span class="value">{t("Paul Farnam")}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">{t("Version:")}</span>
+                <span class="value">1.5.2</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">{t("Size:")}</span>
+                <span class="value">{t("43 MB")}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">{t("Requires:")}</span>
+                <span class="value">{t("iOS 15.2 or later")}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">{t("Price:")}</span>
+                <span class="value">{t("Free (with in-app purchases)")}</span>
+              </div>
+            </div>
+
+            <div class="download-section">
+              <a href="https://apps.apple.com/us/app/headzone/id1609763784" class="app-store-btn" target="_blank" rel="noopener">
+                <img src="/app-store-badge.svg" alt={t("Download on the App Store")} width="180" height="53" />
+              </a>
+              <p class="download-note">{t("For iPhone and iPad")}</p>
+            </div>
+          </div>
+
+          <div class="app-screenshots">
+            <h3>{t("Screenshots")}</h3>
+            <div class="screenshot-grid">
+              <div class="screenshot">
+                <img src={screenshot4.src} alt={t("Headzone Concentration Grid Practice")} class="screenshot-img" />
+              </div>
+              <div class="screenshot">
+                <img src={screenshot5.src} alt={t("Headzone Performance Scores")} class="screenshot-img" />
+              </div>
+              <div class="screenshot">
+                <img src={screenshot1.src} alt={t("Headzone Settings")} class="screenshot-img" />
+              </div>
+              <div class="screenshot">
+                <img src={screenshot2.src} alt={t("Headzone Training Mode")} class="screenshot-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+      <div class="container">
+        <h2 class="section-title">{t("Why Choose Headzone?")}</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">🧠</div>
+            <h3>{t("Mental Training")}</h3>
+            <p>{t("Build focus skills with proven concentration grid techniques used by sports psychologists")}</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎯</div>
+            <h3>{t("Improved Focus")}</h3>
+            <p>{t("Develop awareness of when you lose focus and learn to quickly regain concentration")}</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📊</div>
+            <h3>{t("Track Progress")}</h3>
+            <p>{t("Monitor your improvement with detailed scoring and session history")}</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🏆</div>
+            <h3>{t("Mental Discipline")}</h3>
+            <p>{t("Stay calm and focused even in distracting environments")}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- More Apps Coming Soon -->
+    <section class="coming-soon">
+      <div class="container">
+        <h2 class="section-title">{t("More Apps Coming Soon")}</h2>
+        <p class="coming-soon-text">{t("We're constantly working on new innovative applications. Stay tuned for more exciting releases!")}</p>
+        <a href="/contact" class="contact-btn">{t("Get in Touch")}</a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .apps-page {
+    min-height: 100vh;
+    background: #000000;
+    animation: fadeIn 1s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+  }
+
+  .page-title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 20px #00ff41;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .page-subtitle {
+    font-size: 1.8rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    letter-spacing: 1px;
+  }
+
+  /* Featured App Section */
+  .featured-app {
+    padding: 100px 0;
+    background: #111111;
+    color: #ffffff;
+    border-top: 2px solid #00ff41;
+  }
+
+  .app-showcase {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .app-header {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .app-icon-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.4);
+    border: 2px solid #00ff41;
+  }
+
+  .app-meta {
+    flex: 1;
+  }
+
+  .app-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    text-shadow: 0 0 15px #00ff41;
+  }
+
+  .app-category {
+    color: #00ff41;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+  }
+
+  .app-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .stars {
+    font-size: 1.1rem;
+  }
+
+  .rating-text {
+    color: #cccccc;
+    font-size: 0.9rem;
+  }
+
+  .app-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #ffffff;
+    margin-bottom: 40px;
+  }
+
+  .app-features h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .app-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+
+  .app-features li {
+    padding: 8px 0;
+    color: #cccccc;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .app-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #00ff41;
+    font-weight: bold;
+  }
+
+  .app-details {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid #333;
+  }
+
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+  }
+
+  .detail-item:last-child {
+    border-bottom: none;
+  }
+
+  .detail-item .label {
+    font-weight: 600;
+    color: #cccccc;
+  }
+
+  .detail-item .value {
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .download-section {
+    text-align: center;
+  }
+
+  .app-store-btn {
+    display: inline-block;
+    transition: all 0.3s ease;
+    transform: scale(1);
+  }
+
+  .app-store-btn:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 10px 25px rgba(0, 255, 65, 0.3));
+  }
+
+  .download-note {
+    margin-top: 15px;
+    color: #cccccc;
+    font-size: 0.9rem;
+  }
+
+  /* Screenshots */
+  .app-screenshots h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .screenshot {
+    background: #222222;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 15px 30px rgba(0, 255, 65, 0.2);
+    border: 2px solid #00ff41;
+    transition: all 0.3s ease;
+  }
+
+  .screenshot:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 255, 65, 0.3);
+  }
+
+  .screenshot-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+  }
+
+
+  /* Benefits Section */
+  .benefits {
+    padding: 20px 0 80px 0;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+  }
+
+  .benefit-card {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .benefit-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .benefit-card p {
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  /* Coming Soon Section */
+  .coming-soon {
+    padding: 20px 0 80px 0;
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    color: #333;
+  }
+
+  .coming-soon-text {
+    font-size: 1.1rem;
+    color: #718096;
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+
+  .contact-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .app-showcase {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .app-screenshots {
+      order: -1;
+    }
+
+    .app-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+
+    .app-title {
+      font-size: 2rem;
+    }
+
+    .page-title {
+      font-size: 3rem;
+    }
+
+    .page-subtitle {
+      font-size: 1.4rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .screenshot-grid {
+      grid-template-columns: 1fr;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 15px;
+    }
+
+    .app-title {
+      font-size: 1.8rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+  }
+</style>

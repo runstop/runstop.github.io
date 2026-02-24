@@ -1,0 +1,201 @@
+---
+import companyLogo from '../assets/company-logo.png';
+
+export interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+---
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/">
+        <img src={companyLogo.src} alt="Art is the Game" class="brand-logo" />
+        <span class="brand-text">Art is the Game</span>
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a href="/apps" class={currentPage === 'apps' ? 'active' : ''}>Apps</a>
+      <a href="/about" class={currentPage === 'about' ? 'active' : ''}>About</a>
+      <a href="/support" class={currentPage === 'support' ? 'active' : ''}>Support</a>
+      <a href="/contact" class={currentPage === 'contact' ? 'active' : ''}>Contact</a>
+    </div>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/apps" class={currentPage === 'apps' ? 'active' : ''}>Apps</a>
+    <a href="/about" class={currentPage === 'about' ? 'active' : ''}>About</a>
+    <a href="/support" class={currentPage === 'support' ? 'active' : ''}>Support</a>
+    <a href="/contact" class={currentPage === 'contact' ? 'active' : ''}>Contact</a>
+    <div class="menu-divider"></div>
+    <a href="/privacy" class={currentPage === 'privacy' ? 'active' : ''}>Privacy</a>
+    <a href="/terms" class={currentPage === 'terms' ? 'active' : ''}>Terms of Service</a>
+  </div>
+</nav>
+
+<style>
+  .main-nav {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #00ff41;
+    z-index: 1000;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+
+  .nav-brand a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .brand-logo {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 8px;
+  }
+
+  .brand-text {
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #00ff41;
+    background: rgba(0, 255, 65, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: #ffffff;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+
+  .mobile-menu {
+    display: none;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-bottom: 1px solid #00ff41;
+    overflow: visible;
+  }
+
+  .mobile-menu a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .menu-divider {
+    height: 1px;
+    background: rgba(0, 255, 65, 0.3);
+    margin: 10px 0;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu a.active {
+    color: #00ff41;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .mobile-menu.show {
+      display: block;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenuBtn.classList.toggle('active');
+      mobileMenu?.classList.toggle('show');
+    });
+  });
+</script>

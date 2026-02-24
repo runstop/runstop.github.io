@@ -1,0 +1,311 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { siteConfig } from '../config/site';
+import { statSync } from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, 'terms');
+
+// Get the modification time of this file
+const __filename = fileURLToPath(import.meta.url);
+const stats = statSync(__filename);
+const lastUpdated = stats.mtime.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout 
+	title={t("Terms of Service - Art is the Game")}
+	description={t("Terms of Use for Art is the Game and our mobile applications including Headzone.")}
+	currentPage="terms"
+	lang={lang}
+>
+	<div class="legal-page">
+		<div class="container">
+			
+			<article class="legal-content">
+				<h1>{siteConfig.companyName} – Terms of Use</h1>
+
+				<p class="date-note">
+					Last Updated: {lastUpdated}
+				</p>
+
+				<section>
+					<h2>{t("1. Acceptance")}</h2>
+					<p>
+						These Terms of Use govern your use of the {siteConfig.companyName} mobile app (the "App"). By downloading or using the App, you agree to these Terms and our Privacy Policy. If you do not agree, do not use the App.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("2. Service Description")}</h2>
+					<p>
+						{siteConfig.companyName} provides concentration and counting exercises via a mobile app. We may offer both free features and premium content unlocked through subscription. Subscriptions (monthly or annual) are processed by Apple's in-app purchase system; all payments and cancellations are handled through Apple's platform.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("3. Eligibility")}</h2>
+					<p>
+						You must be at least 9 years old to use this App (we raised the rating from 4+ to 9+). If you are under 13, you should use the App only with parental permission. By using the App, you represent that you meet these age requirements.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("4. Account Registration")}</h2>
+					<p>
+						Some features may require creating a user account. You agree to provide accurate information and keep your login credentials secure. You are responsible for all activities under your account.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("5. Subscription and Payment")}</h2>
+					<p>
+						Premium content is available by subscription (monthly/annual) via Apple In-App Purchase. Subscription fees are as stated in the App. Subscriptions auto-renew until canceled at least 24 hours before the renewal date. You manage cancellations through your Apple account. All sales are final; no refunds except as required by applicable law.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("6. License and Restrictions")}</h2>
+					<p>
+						Art is the Game grants you a limited, non-exclusive license to use the App on your devices, for personal, non-commercial use. You agree not to copy, modify, reverse-engineer, or redistribute the App. You will not engage in illegal activities, infringe others' rights, or disrupt the App's operation.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("7. User Content")}</h2>
+					<p>
+						If the App allows you to submit content (e.g. drawings, feedback), you retain ownership of that content. By submitting content, you grant us a worldwide, royalty-free license to use, display, and distribute it in connection with the App. You represent that you have the rights to all content you submit.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("8. Intellectual Property")}</h2>
+					<p>
+						All materials in the App (software, graphics, text, logos) are owned by {siteConfig.companyName} or licensors and are protected by copyright and trademark. "{siteConfig.companyName}" and related logos are our trademarks. You may not use our trademarks without permission.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("9. Third-Party SDKs")}</h2>
+					<p>
+						The App may include third-party services or SDKs (such as analytics or ad networks). These providers are bound by their own terms and our Privacy Policy. Any data shared with third parties will be handled per our Privacy Policy and Apple's requirements.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("10. Disclaimers")}</h2>
+					<p>
+						<strong>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT ANY WARRANTIES OF ANY KIND.</strong> We expressly disclaim all warranties, express or implied, including fitness for a particular purpose or non-infringement. We do not guarantee the App will be uninterrupted or error-free.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("11. Limitation of Liability")}</h2>
+					<p>
+						<strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW,</strong> {siteConfig.companyName} and its affiliates will not be liable for any indirect, incidental, special, or consequential damages arising from your use of the App. Our total liability for any claim is limited to the amount you paid (if any) for the App. This limitation applies in all legal theories.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("12. Indemnification")}</h2>
+					<p>
+						You agree to indemnify and hold harmless {siteConfig.companyName} from any claims, losses, or damages (including attorneys' fees) arising from your use of the App or violation of these Terms.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("13. Modification of Terms")}</h2>
+					<p>
+						We may update or change these Terms at any time, and your continued use of the App after such changes means you accept them.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("14. Governing Law")}</h2>
+					<p>
+						These Terms are governed by the laws of Nova Scotia, Canada. Any dispute will be resolved in Nova Scotia courts.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("15. Termination")}</h2>
+					<p>
+						We may terminate or suspend your access to the App at any time for violation of these Terms or other reasons, without notice. Sections on Intellectual Property, Disclaimers, Limitation of Liability, Indemnification, Governing Law and Termination survive termination.
+					</p>
+				</section>
+
+				<section class="contact-section">
+					<h2>{t("16. Contact")}</h2>
+					<p>
+						For support or legal inquiries, contact {siteConfig.companyName} at:<br>
+						{siteConfig.location}<br>
+						<strong>Email:</strong> <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>
+					</p>
+				</section>
+
+			</article>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.legal-page {
+		min-height: 100vh;
+		background: rgba(255, 255, 255, 0.95);
+		padding: 0 0 40px 0;
+	}
+
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.breadcrumb {
+		margin-bottom: 40px;
+	}
+
+	.breadcrumb a {
+		color: #667eea;
+		text-decoration: none;
+		font-weight: 500;
+		transition: color 0.2s ease;
+	}
+
+	.breadcrumb a:hover {
+		color: #764ba2;
+	}
+
+	.legal-content {
+		background: white;
+		border-radius: 12px;
+		padding: 0 60px 60px 60px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	}
+
+	h1 {
+		color: #2d3748;
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 30px;
+		text-align: center;
+		border-bottom: 3px solid #667eea;
+		padding-bottom: 20px;
+	}
+
+	h2 {
+		color: #2d3748;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-top: 40px;
+		margin-bottom: 20px;
+		border-left: 4px solid #667eea;
+		padding-left: 20px;
+	}
+
+	h3 {
+		color: #2d3748;
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-top: 30px;
+		margin-bottom: 15px;
+	}
+
+	section {
+		margin-bottom: 30px;
+	}
+
+	p {
+		color: #4a5568;
+		line-height: 1.6;
+		margin-bottom: 16px;
+		font-size: 1rem;
+	}
+
+	strong {
+		color: #2d3748;
+		font-weight: 600;
+	}
+
+	a {
+		color: #667eea;
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	a:hover {
+		color: #764ba2;
+		text-decoration: underline;
+	}
+
+	.contact-section {
+		background: #f7fafc;
+		padding: 30px;
+		border-radius: 8px;
+		margin: 40px 0;
+	}
+
+	.contact-section h2 {
+		border-left: none;
+		padding-left: 0;
+		margin-top: 0;
+	}
+
+	.additional-info {
+		margin-top: 50px;
+		padding-top: 30px;
+		border-top: 2px solid #e2e8f0;
+	}
+
+	.language-note {
+		background: #edf2f7;
+		padding: 15px;
+		border-radius: 6px;
+		margin-bottom: 30px;
+		font-style: italic;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		.legal-content {
+			padding: 40px 30px;
+		}
+
+		h1 {
+			font-size: 2rem;
+		}
+
+		h2 {
+			font-size: 1.25rem;
+		}
+
+		h3 {
+			font-size: 1.1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.container {
+			padding: 0 15px;
+		}
+
+		.legal-content {
+			padding: 30px 20px;
+		}
+
+		h1 {
+			font-size: 1.75rem;
+		}
+
+		.contact-section {
+			padding: 20px;
+		}
+	}
+</style>

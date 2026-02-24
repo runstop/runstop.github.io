@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <!-- HEADZONE text -->
+  <text x="10" y="60" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#FFFFFF">HEAD</text>
+  <text x="140" y="60" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#00FF41">ZONE</text>
+  
+  <!-- Underline accent -->
+  <rect x="10" y="70" width="280" height="4" fill="#00FF41"/>
+</svg>

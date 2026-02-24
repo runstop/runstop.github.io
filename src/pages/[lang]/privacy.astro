@@ -1,0 +1,12 @@
+---
+import PrivacyPage from '../privacy.astro';
+import { LEGAL_LOCALES } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return LEGAL_LOCALES.map((lang) => ({
+    params: { lang },
+  }));
+}
+---
+
+<PrivacyPage />

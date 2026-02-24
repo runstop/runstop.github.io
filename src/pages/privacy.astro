@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { siteConfig } from '../config/site';
+import { statSync } from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, 'privacy');
+
+// Get the modification time of this file
+const __filename = fileURLToPath(import.meta.url);
+const stats = statSync(__filename);
+const lastUpdated = stats.mtime.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout 
+	title={t("Privacy Policy - Art is the Game")}
+	description={t("Privacy Policy for Art is the Game and our mobile applications including Headzone.")}
+	currentPage="privacy"
+	lang={lang}
+>
+	<div class="legal-page">
+		<div class="container">
+			
+			<article class="legal-content fade-in">
+				<h1>{siteConfig.companyName} – Privacy Policy</h1>
+
+				<p class="date-note">
+					Last Updated: {lastUpdated}
+				</p>
+
+				<p class="intro">
+					{siteConfig.companyName} ("we", "us", "our") operates this mobile app and related services. This Privacy Policy explains how we collect, use, disclose, and protect personal information in compliance with Canadian law (PIPEDA) and Apple's App Store privacy guidelines. We are a {siteConfig.location}-based developer (business number and DUNS on record) and have appointed a Privacy Officer to oversee compliance.
+				</p>
+
+				<section class="page-notice">
+					<p><strong>Privacy-First Approach:</strong> Our website collects no tracking data, uses no cookies, and requires no consent banners. Your privacy is protected by design.</p>
+				</section>
+
+				<section>
+					<h2>{t("Information We Collect")}</h2>
+					<p>
+						<strong>Website:</strong> We do not collect any personal information, track your browsing, or store cookies on your device when you visit our website. If you choose to voluntarily submit your email address via our optional newsletter signup form, only then do we collect that information.
+					</p>
+					<p>
+						<strong>Mobile Apps:</strong> We collect personal information you provide (e.g. name, email address, any drawings or submissions) and usage data (device type, app usage) necessary for app functionality. We minimize data collection to what is relevant to core features. For example, email addresses are collected only if you opt in to our optional newsletter; this is entirely voluntary. We do not collect sensitive health or financial data.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("How We Use Information")}</h2>
+					<p>
+						We use personal information to operate the App (e.g. save your progress), improve user experience, send optional updates (newsletter), and for internal analytics. We obtain explicit consent for uses beyond these purposes. We never use personal data for undisclosed purposes.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("Sharing and Disclosure")}</h2>
+					<p>
+						We do <strong>not</strong> sell or rent your personal information. We may share data with third-party service providers (e.g. cloud hosting, analytics, payment processors) only as needed to deliver the App. We require all such third parties to protect your data as strictly as we do. We may also disclose information to comply with legal obligations. Our App is not intended for young children: we comply with applicable children's privacy laws (e.g. COPPA) for any data from minors.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("Consent and Choices")}</h2>
+					<p>
+						<strong>Website:</strong> No consent is required for browsing our website as we collect no personal data or tracking information. Email signup is entirely optional and voluntary.
+					</p>
+					<p>
+						<strong>Mobile Apps:</strong> By using the App, you consent to this Policy. You can withdraw consent at any time (for example, by unsubscribing from emails). We never make payment or features conditional on providing personal data. You may request deletion of your data or revoke consents at any time.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("Data Retention and Security")}</h2>
+					<p>
+						We retain personal information only as long as needed for the purposes above, or as required by law. When data is no longer needed, we securely delete or anonymize it. We implement appropriate security measures (encryption, access controls, staff training) to safeguard data.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("Cross-Border Transfers")}</h2>
+					<p>
+						Your information may be stored and processed in Canada or other countries. If transferred across borders, we require that data remain protected under standards comparable to Canadian privacy laws. Please note foreign jurisdictions may have different privacy protections.
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("Your Rights")}</h2>
+					<p>
+						You have the right to access, correct, or delete your personal information as provided under PIPEDA. You may make such requests to our Privacy Officer at the contact below. We will respond within a reasonable time (typically 30 days).
+					</p>
+				</section>
+
+				<section>
+					<h2>{t("Complaints")}</h2>
+					<p>
+						If you have any concerns about our privacy practices, please contact our Privacy Officer. If an issue is not resolved to your satisfaction, you have the right to file a complaint with the Office of the Privacy Commissioner of Canada (OPC) or the Nova Scotia Information and Privacy Commissioner.
+					</p>
+				</section>
+
+				<section class="contact-section">
+					<h2>{t("Contact")}</h2>
+					<p>
+						{siteConfig.companyName}<br>
+						{siteConfig.location}<br>
+						<strong>Email:</strong> <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>
+					</p>
+				</section>
+
+				<p class="update-notice">
+					We will update this Privacy Policy as needed. The latest version will be posted in the App and on our website.
+				</p>
+			</article>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.legal-page {
+		min-height: 100vh;
+		background: rgba(255, 255, 255, 0.95);
+		padding: 0 0 40px 0;
+	}
+
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.breadcrumb {
+		margin-bottom: 40px;
+	}
+
+	.breadcrumb a {
+		color: #667eea;
+		text-decoration: none;
+		font-weight: 500;
+		transition: color 0.2s ease;
+	}
+
+	.breadcrumb a:hover {
+		color: #764ba2;
+	}
+
+	.legal-content {
+		background: white;
+		border-radius: 12px;
+		padding: 0 60px 60px 60px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	}
+
+	h1 {
+		color: #2d3748;
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 30px;
+		text-align: center;
+		border-bottom: 3px solid #667eea;
+		padding-bottom: 20px;
+	}
+
+	h2 {
+		color: #2d3748;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-top: 40px;
+		margin-bottom: 20px;
+		border-left: 4px solid #667eea;
+		padding-left: 20px;
+	}
+
+	.intro {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		color: #4a5568;
+		margin-bottom: 40px;
+		padding: 20px;
+		background: #f7fafc;
+		border-radius: 8px;
+		border-left: 4px solid #667eea;
+	}
+
+	section {
+		margin-bottom: 30px;
+	}
+
+	p {
+		color: #4a5568;
+		line-height: 1.6;
+		margin-bottom: 16px;
+		font-size: 1rem;
+	}
+
+	strong {
+		color: #2d3748;
+		font-weight: 600;
+	}
+
+	a {
+		color: #667eea;
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	a:hover {
+		color: #764ba2;
+		text-decoration: underline;
+	}
+
+	.contact-section {
+		background: #f7fafc;
+		padding: 30px;
+		border-radius: 8px;
+		margin: 40px 0;
+	}
+
+	.contact-section h2 {
+		border-left: none;
+		padding-left: 0;
+		margin-top: 0;
+	}
+
+	.date-note {
+		font-style: italic;
+		color: #718096;
+		margin-top: 20px;
+	}
+
+	.update-notice {
+		background: #edf2f7;
+		padding: 20px;
+		border-radius: 8px;
+		border-left: 4px solid #4299e1;
+		margin-top: 40px;
+		font-weight: 500;
+	}
+
+	.page-notice {
+		background: #f0f9ff;
+		padding: 20px;
+		border-radius: 8px;
+		border-left: 4px solid #0ea5e9;
+		margin-bottom: 30px;
+	}
+
+	.page-notice p {
+		margin: 0;
+		color: #0f172a;
+		font-size: 0.95rem;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		.legal-content {
+			padding: 40px 30px;
+		}
+
+		h1 {
+			font-size: 2rem;
+		}
+
+		h2 {
+			font-size: 1.25rem;
+		}
+
+		.intro {
+			font-size: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.container {
+			padding: 0 15px;
+		}
+
+		.legal-content {
+			padding: 30px 20px;
+		}
+
+		h1 {
+			font-size: 1.75rem;
+		}
+
+		.contact-section {
+			padding: 20px;
+		}
+	}
+</style>

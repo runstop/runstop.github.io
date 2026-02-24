@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Green background circle -->
+  <circle cx="200" cy="200" r="200" fill="#7ED321"/>
+  
+  <!-- Black head silhouette -->
+  <path d="M100 300 C100 200, 120 120, 200 120 C280 120, 300 200, 300 300 L300 380 L100 380 Z" fill="#000000"/>
+  
+  <!-- Concentration grid inside head -->
+  <g transform="translate(160, 180)">
+    <!-- Grid squares -->
+    <rect x="0" y="0" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="20" y="0" width="20" height="20" fill="#000000"/>
+    <rect x="40" y="0" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="60" y="0" width="20" height="20" fill="#000000"/>
+    
+    <rect x="0" y="20" width="20" height="20" fill="#000000"/>
+    <rect x="20" y="20" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="40" y="20" width="20" height="20" fill="#000000"/>
+    <rect x="60" y="20" width="20" height="20" fill="#FFFFFF"/>
+    
+    <rect x="0" y="40" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="20" y="40" width="20" height="20" fill="#000000"/>
+    <rect x="40" y="40" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="60" y="40" width="20" height="20" fill="#000000"/>
+    
+    <rect x="0" y="60" width="20" height="20" fill="#000000"/>
+    <rect x="20" y="60" width="20" height="20" fill="#FFFFFF"/>
+    <rect x="40" y="60" width="20" height="20" fill="#000000"/>
+    <rect x="60" y="60" width="20" height="20" fill="#FFFFFF"/>
+  </g>
+</svg>

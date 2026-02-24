@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Black rounded rectangle background -->
+  <rect x="10" y="10" width="100" height="100" rx="22" ry="22" fill="#000000"/>
+  
+  <!-- Green border -->
+  <rect x="10" y="10" width="100" height="100" rx="22" ry="22" fill="none" stroke="#00FF41" stroke-width="3"/>
+  
+  <!-- Head silhouette -->
+  <path d="M35 85 C35 65, 40 45, 60 45 C80 45, 85 65, 85 85 L85 95 L35 95 Z" fill="#FFFFFF"/>
+  
+  <!-- Grid pattern in head -->
+  <g transform="translate(50, 60)">
+    <rect x="0" y="0" width="6" height="6" fill="#00FF41"/>
+    <rect x="6" y="0" width="6" height="6" fill="#000000"/>
+    <rect x="12" y="0" width="6" height="6" fill="#00FF41"/>
+    <rect x="0" y="6" width="6" height="6" fill="#000000"/>
+    <rect x="6" y="6" width="6" height="6" fill="#00FF41"/>
+    <rect x="12" y="6" width="6" height="6" fill="#000000"/>
+    <rect x="0" y="12" width="6" height="6" fill="#00FF41"/>
+    <rect x="6" y="12" width="6" height="6" fill="#000000"/>
+    <rect x="12" y="12" width="6" height="6" fill="#00FF41"/>
+  </g>
+</svg>

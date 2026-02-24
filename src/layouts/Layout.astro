@@ -1,0 +1,75 @@
+---
+import Navigation from '../components/Navigation.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  currentPage?: string;
+  lang?: string;
+}
+
+const {
+  title = 'Art is the Game - Professional iOS App Development',
+  description = 'Professional iOS app development by Paul Farnam. Creator of Headzone and other innovative mobile applications.',
+  currentPage = '',
+  lang = 'en-US',
+} = Astro.props;
+
+const buildTime = new Date().toISOString();
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="ios app development, mobile apps, headzone, focus app, productivity, paul farnam, artist the game"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://artisthegame.com" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Art is the Game" />
+
+    <meta name="build-time" content={buildTime} />
+  </head>
+  <body>
+    <Navigation currentPage={currentPage} />
+    <main class="main-content">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: #000000;
+    color: #ffffff;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+</style>

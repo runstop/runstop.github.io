@@ -1,0 +1,489 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { siteConfig } from '../config/site';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, 'support');
+---
+
+<Layout
+  title={`${t("App Support")} - Art is the Game`}
+  description={t("Find help with our apps, manage your subscriptions, and get technical support")}
+  currentPage="support"
+  lang={lang}
+>
+  <div class="support-page">
+    <div class="container">
+      <header class="fade-in">
+        <h1 class="support-title">{t("App Support")}</h1>
+        <p class="support-description">{t("Find help with our apps, manage your subscriptions, and get technical support")}</p>
+      </header>
+
+      <div class="support-content slide-up">
+          <!-- Quick Support Cards -->
+          <div class="support-cards">
+            <div class="support-card">
+              <div class="card-icon">📧</div>
+              <h3>{t("Email Support")}</h3>
+              <p>{t("Get help with app issues, feature requests, or general questions.")}</p>
+              <a href={`mailto:${siteConfig.supportEmail}`} class="support-btn primary">
+                {siteConfig.supportEmail}
+              </a>
+              <p class="response-time">{t("We typically respond within 24 hours during business days")}</p>
+            </div>
+
+            <div class="support-card">
+              <div class="card-icon">🔄</div>
+              <h3>{t("Manage Subscriptions")}</h3>
+              <p>{t("Cancel or modify your app subscriptions through the App Store.")}</p>
+              <a href="https://support.apple.com/en-ca/118428" target="_blank" rel="noopener" class="support-btn secondary">
+                {t("Apple Support Guide")}
+              </a>
+              <p class="instructions">{t("Subscriptions on your iPhone")}</p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="faq-section">
+            <h2>{t("Frequently Asked Questions")}</h2>
+            <div class="faq-list">
+              <div class="faq-item">
+                <h4>{t("How do I get started with Headzone?")}</h4>
+                <p>{t("Download the app from the App Store and follow the onboarding process. Start with shorter sessions and gradually increase the difficulty as you improve your focus skills.")}</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>{t("Is there a free version available?")}</h4>
+                <p>{t("Headzone is free to download with basic features included. Headzone Pro is available as an in-app purchase for advanced features and unlimited sessions.")}</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>{t("What devices are supported?")}</h4>
+                <p>{t("Headzone is available for iPhone and iPad running iOS 15.2 or later. The app is optimized for all screen sizes.")}</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>{t("How do concentration grids work?")}</h4>
+                <p>{t("Concentration grids are a proven technique used by sports psychologists. They help you practice maintaining focus on specific targets while filtering out distractions, building your mental discipline over time.")}</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>{t("Can I track my progress?")}</h4>
+                <p>{t("Yes! Headzone includes a comprehensive scoring system and session history that syncs across your devices, allowing you to monitor your improvement over time.")}</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>{t("I'm having technical issues. What should I do?")}</h4>
+                <p>{t("First, try restarting the app or your device. If the issue persists, please contact us at support@artisthegame.com with details about the problem and your device model.")}</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>{t("How do I cancel my subscription?")}</h4>
+                <p>{t("Subscriptions are managed through the App Store, not directly through our app. Go to Settings > Apple ID > Subscriptions on your iPhone, or visit the Apple Support link above for detailed instructions.")}</p>
+              </div>
+
+              <div class="faq-item">
+                <h4>{t("Can I get a refund?")}</h4>
+                <p>{t("Refunds are handled by Apple through the App Store. You can request a refund by visiting reportaproblem.apple.com or contacting Apple Support directly.")}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="contact-section">
+            <h2>{t("Still Need Help?")}</h2>
+            <div class="contact-info">
+              <div class="contact-method">
+                <span class="method-icon">📧</span>
+                <div class="method-details">
+                  <span class="method-label">{t("Email Support")}</span>
+                  <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <span class="method-icon">📍</span>
+                <div class="method-details">
+                  <span class="method-label">{t("Location")}</span>
+                  <span>{siteConfig.location}</span>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <span class="method-icon">⏰</span>
+                <div class="method-details">
+                  <span class="method-label">{t("Response Time")}</span>
+                  <span>{t("Within 24 hours during business days")}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-note">
+              <p>{t("For general inquiries or feedback about our apps, you can also visit our")} <a href="/contact">{t("Contact page")}</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .support-page {
+    min-height: 100vh;
+    background: #000000;
+    animation: fadeIn 1s ease-in;
+    padding: 100px 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #00ff41;
+  }
+
+  .support-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px #00ff41;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .support-description {
+    font-size: 1.4rem;
+    color: #cccccc;
+    margin: 0;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .support-content {
+    padding: 0;
+  }
+
+  /* Support Cards */
+  .support-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .support-card {
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .support-card:hover {
+    border-color: #00ff41;
+    box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .support-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .support-card p {
+    color: #cccccc;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .support-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .support-btn.primary {
+    background: #00ff41;
+    color: #000000;
+    border: 2px solid #00ff41;
+  }
+
+  .support-btn.primary:hover {
+    background: transparent;
+    color: #00ff41;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 65, 0.3);
+  }
+
+  .support-btn.secondary {
+    background: transparent;
+    color: #00ff41;
+    border: 2px solid #00ff41;
+  }
+
+  .support-btn.secondary:hover {
+    background: #00ff41;
+    color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 65, 0.3);
+  }
+
+  .response-time,
+  .instructions {
+    font-size: 0.85rem;
+    color: #888888;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    margin-bottom: 50px;
+  }
+
+  .faq-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px #00ff41;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .faq-item {
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: #00ff41;
+    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.1);
+  }
+
+  .faq-item h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .faq-item p {
+    color: #cccccc;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Contact Section */
+  .contact-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px #00ff41;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .contact-method:hover {
+    border-color: #00ff41;
+    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.1);
+  }
+
+  .method-icon {
+    font-size: 1.5rem;
+  }
+
+  .method-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .method-label {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .method-details a,
+  .method-details span {
+    color: #00ff41;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .method-details a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-note {
+    text-align: center;
+    padding: 25px;
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 12px;
+  }
+
+  .contact-note p {
+    color: #cccccc;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .contact-note a {
+    color: #00ff41;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .contact-note a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .support-page {
+      padding: 50px 0;
+    }
+
+    .container {
+      padding: 0 20px;
+    }
+
+    .support-cards {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .support-title {
+      font-size: 3rem;
+    }
+
+    .support-description {
+      font-size: 1.2rem;
+    }
+
+    .faq-section h2 {
+      font-size: 2rem;
+    }
+
+    .contact-section h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .support-title {
+      font-size: 2.5rem;
+    }
+
+    .support-description {
+      font-size: 1.1rem;
+    }
+
+    .support-card {
+      padding: 20px;
+    }
+
+    .faq-item {
+      padding: 20px;
+    }
+
+    .faq-section h2 {
+      font-size: 1.75rem;
+    }
+
+    .contact-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .contact-method {
+      padding: 15px;
+    }
+  }
+</style>

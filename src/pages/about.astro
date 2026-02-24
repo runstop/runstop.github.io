@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import profilePhoto from '../assets/profile-photo.jpg';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, 'about');
+---
+
+<Layout 
+	title={t("About Art is the Game")}
+	description={t("Meet the creative mind behind intentional design for mental wellness")}
+	currentPage="about"
+	lang={lang}
+>
+	<div class="about-page">
+		<section class="about-hero">
+			<div class="container">
+				<h1 class="page-title">{t("About Art is the Game")}</h1>
+				<p class="subtitle">{t("Meet the creative mind behind intentional design for mental wellness")}</p>
+			</div>
+		</section>
+
+		<section class="about-content-section">
+			<div class="container">
+				<h2 class="section-title">{t("Paul Farnam - Creative Mind Behind Art is the Game")}</h2>
+				<div class="about-content">
+					<div class="profile-section">
+						<img src={profilePhoto.src} alt={t("Paul Farnam")} class="profile-photo" />
+					</div>
+					<div class="about-text">
+						<p>
+							{t("I started this studio to merge psychological research with design that feels good. My goal: empower people to feel more in control of their attention, mental energy, and daily flow.")}
+						</p>
+						<p>
+							{t("When you use a product from Art is the Game, you're getting more than code — you're getting intention.")}
+						</p>
+					</div>
+					<div class="about-features">
+						<div class="feature-item">
+							<div class="feature-icon">🧠</div>
+							<h4>{t("Research-Driven")}</h4>
+							<p>{t("Built on psychology and focus training science")}</p>
+						</div>
+						<div class="feature-item">
+							<div class="feature-icon">💝</div>
+							<h4>{t("Human-Centered")}</h4>
+							<p>{t("Designed with empathy and real user needs")}</p>
+						</div>
+						<div class="feature-item">
+							<div class="feature-icon">🎯</div>
+							<h4>{t("Purposeful")}</h4>
+							<p>{t("Every feature serves your mental wellness")}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.about-page {
+		min-height: 100vh;
+		padding-top: 80px;
+	}
+
+	.about-hero {
+		padding: 60px 0 40px;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		text-align: center;
+	}
+
+	.page-title {
+		font-size: 3rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+		opacity: 0.9;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.about-content-section {
+		padding: 80px 0;
+	}
+
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 3rem;
+		text-align: center;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.about-content {
+		display: grid;
+		gap: 3rem;
+		margin-bottom: 4rem;
+	}
+
+	.profile-section {
+		text-align: center;
+	}
+
+	.profile-photo {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		object-fit: cover;
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+	}
+
+	.about-text {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.about-text p {
+		font-size: 1.1rem;
+		line-height: 1.8;
+		margin-bottom: 1.5rem;
+		color: #4a5568;
+	}
+
+	.about-features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+
+	.feature-item {
+		text-align: center;
+		padding: 2rem;
+		background: #f7fafc;
+		border-radius: 12px;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.feature-item:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+	}
+
+	.feature-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.feature-item h4 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.feature-item p {
+		color: #718096;
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 768px) {
+		.page-title {
+			font-size: 2rem;
+		}
+
+		.section-title {
+			font-size: 1.75rem;
+		}
+
+		.about-features {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
