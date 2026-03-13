@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const rewardCode = 'Survey2026_FreeWeek';
 ---
 
 <Layout
@@ -51,7 +49,7 @@ const rewardCode = 'Survey2026_FreeWeek';
           </div>
           <div class="reward-code-block">
             <span class="reward-code-label">Redemption code</span>
-            <code>{rewardCode}</code>
+            <code id="rewardCodeValue"></code>
           </div>
         </div>
 
@@ -80,6 +78,16 @@ const rewardCode = 'Survey2026_FreeWeek';
             Your responses are sent through the same secure FormSubmit flow already used on artisthegame.com and land
             in your support inbox.
           </p>
+        </div>
+
+        <div id="wizardProgress" class="wizard-progress" aria-live="polite">
+          <div class="wizard-progress-top">
+            <p id="wizardStepLabel" class="wizard-step-label">Step 1 of 7</p>
+            <p id="wizardStepTitle" class="wizard-step-title">About you</p>
+          </div>
+          <div class="wizard-progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1">
+            <span id="wizardProgressFill"></span>
+          </div>
         </div>
 
         <p id="feedbackFormStatus" class="form-status is-hidden" role="alert"></p>
@@ -244,8 +252,8 @@ const rewardCode = 'Survey2026_FreeWeek';
 
             <fieldset class="question-card">
               <legend>9. If anything confused you early on, what was it?</legend>
-              <label class="question-label" for="q09EarlyConfusion">Optional details</label>
-              <textarea id="q09EarlyConfusion" name="q09_early_confusion" rows="4" placeholder="Anything you remember from the first session or two"></textarea>
+              <label class="question-label" for="q09EarlyConfusion">Your answer</label>
+              <textarea id="q09EarlyConfusion" name="q09_early_confusion" rows="4" placeholder="Anything you remember from the first session or two" required></textarea>
             </fieldset>
           </section>
 
@@ -288,8 +296,8 @@ const rewardCode = 'Survey2026_FreeWeek';
 
             <fieldset class="question-card">
               <legend>12. Which training modes felt least useful or least clear?</legend>
-              <label class="question-label" for="q12LeastUsefulModes">Optional details</label>
-              <textarea id="q12LeastUsefulModes" name="q12_least_useful_modes" rows="4" placeholder="Tell me which ones missed the mark and why"></textarea>
+              <label class="question-label" for="q12LeastUsefulModes">Your answer</label>
+              <textarea id="q12LeastUsefulModes" name="q12_least_useful_modes" rows="4" placeholder="Tell me which ones missed the mark and why" required></textarea>
             </fieldset>
 
             <fieldset class="question-card">
@@ -307,8 +315,8 @@ const rewardCode = 'Survey2026_FreeWeek';
             <fieldset class="question-card">
               <legend>14. Have you noticed any real-world benefit yet?</legend>
               <p class="helper-text">If yes, where did you notice it? If not yet, what would need to happen for the app to feel more valuable?</p>
-              <label class="question-label" for="q14RealWorldBenefit">Optional details</label>
-              <textarea id="q14RealWorldBenefit" name="q14_real_world_benefit" rows="4" placeholder="Your answer"></textarea>
+              <label class="question-label" for="q14RealWorldBenefit">Your answer</label>
+              <textarea id="q14RealWorldBenefit" name="q14_real_world_benefit" rows="4" placeholder="Your answer" required></textarea>
             </fieldset>
           </section>
 
@@ -333,7 +341,7 @@ const rewardCode = 'Survey2026_FreeWeek';
               </div>
             </fieldset>
 
-            <fieldset class="question-card">
+            <fieldset class="question-card" data-required-checkbox-group>
               <legend>16. What kind of coaching do you want more of?</legend>
               <p class="helper-text">Select all that apply.</p>
               <div class="choices-grid">
@@ -346,6 +354,7 @@ const rewardCode = 'Survey2026_FreeWeek';
                 <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Less text, more concise summaries" /> <span>Less text, more concise summaries</span></label>
                 <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Other" data-other-target="q16OtherCoaching" /> <span>Other</span></label>
               </div>
+              <p class="group-error" hidden>Please choose at least one coaching preference.</p>
               <div id="q16OtherCoaching" class="other-input" data-other-wrapper hidden>
                 <label for="q16OtherCoachingText">What kind of coaching do you want more of?</label>
                 <input id="q16OtherCoachingText" type="text" name="q16_more_coaching_other" placeholder="Your answer" data-required-when-visible="true" disabled />
@@ -354,8 +363,8 @@ const rewardCode = 'Survey2026_FreeWeek';
 
             <fieldset class="question-card">
               <legend>17. If you could improve one thing about the results or coaching screen, what would it be?</legend>
-              <label class="question-label" for="q17ImproveResults">Optional details</label>
-              <textarea id="q17ImproveResults" name="q17_results_screen_improvement" rows="4" placeholder="Your answer"></textarea>
+              <label class="question-label" for="q17ImproveResults">Your answer</label>
+              <textarea id="q17ImproveResults" name="q17_results_screen_improvement" rows="4" placeholder="Your answer" required></textarea>
             </fieldset>
           </section>
 
@@ -380,7 +389,7 @@ const rewardCode = 'Survey2026_FreeWeek';
             </fieldset>
 
             <div id="subscriptionFollowup" class="conditional-section" hidden>
-              <fieldset class="question-card">
+              <fieldset class="question-card" data-required-checkbox-group>
                 <legend>19. What would make Headzone Pro feel worth paying for?</legend>
                 <p class="helper-text">Select all that apply.</p>
                 <div class="choices-grid">
@@ -395,6 +404,7 @@ const rewardCode = 'Survey2026_FreeWeek';
                   <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="More generous trial / offer" disabled /> <span>More generous trial / offer</span></label>
                   <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Other" data-other-target="q19OtherValue" disabled /> <span>Other</span></label>
                 </div>
+                <p class="group-error" hidden>Please choose at least one value improvement.</p>
                 <div id="q19OtherValue" class="other-input" data-other-wrapper hidden>
                   <label for="q19OtherValueText">What would make it feel worth paying for?</label>
                   <input id="q19OtherValueText" type="text" name="q19_pro_value_other" placeholder="Your answer" data-required-when-visible="true" disabled />
@@ -403,8 +413,8 @@ const rewardCode = 'Survey2026_FreeWeek';
 
               <fieldset class="question-card">
                 <legend>20. If you decided not to subscribe today, what held you back most?</legend>
-                <label class="question-label" for="q20HoldBack">Optional details</label>
-                <textarea id="q20HoldBack" name="q20_hold_back" rows="4" placeholder="Your answer" disabled></textarea>
+                <label class="question-label" for="q20HoldBack">Your answer</label>
+                <textarea id="q20HoldBack" name="q20_hold_back" rows="4" placeholder="Your answer" data-required-when-visible="true" disabled></textarea>
               </fieldset>
             </div>
           </section>
@@ -426,17 +436,20 @@ const rewardCode = 'Survey2026_FreeWeek';
 
             <fieldset class="question-card">
               <legend>22. If you want, leave your email so I can follow up about your feedback or invite you to test improvements.</legend>
-              <p class="helper-text">Optional.</p>
-              <label class="question-label" for="q22Email">Email address</label>
-              <input id="q22Email" type="email" name="email" inputmode="email" autocomplete="email" placeholder="name@example.com" />
+              <label class="question-label" for="q22Email">Email address <span class="required">*</span></label>
+              <input id="q22Email" type="email" name="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required />
             </fieldset>
           </section>
 
-          <div class="submit-row">
+          <div class="wizard-nav">
+            <button id="feedbackBackBtn" type="button" class="secondary-btn">Back</button>
             <p class="submit-note">
-              After you submit, your free-week code will appear immediately on this page.
+              Complete each step and submit at the end. Your reward code appears after a successful submission.
             </p>
-            <button id="feedbackSubmitBtn" type="submit" class="submit-btn">Send survey and show my code</button>
+            <div class="wizard-actions">
+              <button id="feedbackNextBtn" type="button" class="submit-btn">Continue</button>
+              <button id="feedbackSubmitBtn" type="submit" class="submit-btn is-hidden">Submit Survey</button>
+            </div>
           </div>
         </form>
       </section>
@@ -677,6 +690,58 @@ const rewardCode = 'Survey2026_FreeWeek';
     color: #ffd8d8;
   }
 
+  .wizard-progress {
+    margin: 0 0 18px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .wizard-progress-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .wizard-step-label,
+  .wizard-step-title {
+    margin: 0;
+  }
+
+  .wizard-step-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8dffad;
+  }
+
+  .wizard-step-title {
+    font-size: 1rem;
+    color: #f0f0f0;
+    text-align: right;
+  }
+
+  .wizard-progress-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .wizard-progress-bar span {
+    display: block;
+    width: 14.2857%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #00ff41, #7dff97);
+    transition: width 0.25s ease;
+  }
+
   .feedback-form {
     display: flex;
     flex-direction: column;
@@ -687,6 +752,10 @@ const rewardCode = 'Survey2026_FreeWeek';
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  .survey-section[hidden] {
+    display: none;
   }
 
   .section-header {
@@ -873,7 +942,7 @@ const rewardCode = 'Survey2026_FreeWeek';
     font-size: 0.96rem;
   }
 
-  .submit-row {
+  .wizard-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -888,12 +957,16 @@ const rewardCode = 'Survey2026_FreeWeek';
     line-height: 1.6;
   }
 
+  .wizard-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .secondary-btn,
   .submit-btn {
     cursor: pointer;
-    border: none;
     border-radius: 999px;
-    background: linear-gradient(135deg, #00ff41, #7dff97);
-    color: #031504;
     padding: 16px 26px;
     font: inherit;
     font-weight: 800;
@@ -902,6 +975,12 @@ const rewardCode = 'Survey2026_FreeWeek';
       transform 0.2s ease,
       box-shadow 0.2s ease,
       opacity 0.2s ease;
+  }
+
+  .submit-btn {
+    border: none;
+    background: linear-gradient(135deg, #00ff41, #7dff97);
+    color: #031504;
     box-shadow: 0 14px 30px rgba(0, 255, 65, 0.22);
   }
 
@@ -915,6 +994,28 @@ const rewardCode = 'Survey2026_FreeWeek';
     cursor: wait;
     transform: none;
     box-shadow: none;
+  }
+
+  .secondary-btn {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.04);
+    color: #f4f4f4;
+  }
+
+  .secondary-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(0, 255, 65, 0.34);
+    background: rgba(0, 255, 65, 0.06);
+  }
+
+  .secondary-btn:disabled {
+    opacity: 0.55;
+    cursor: default;
+    transform: none;
+  }
+
+  .is-hidden {
+    display: none !important;
   }
 
   @media (max-width: 720px) {
@@ -955,6 +1056,15 @@ const rewardCode = 'Survey2026_FreeWeek';
     .reward-card {
       padding: 18px;
     }
+
+    .wizard-progress-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .wizard-step-title {
+      text-align: left;
+    }
   }
 
   @media (max-width: 520px) {
@@ -971,18 +1081,53 @@ const rewardCode = 'Survey2026_FreeWeek';
       flex-direction: row;
       justify-content: flex-start;
     }
+
+    .wizard-actions {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .secondary-btn,
+    .submit-btn {
+      width: 100%;
+    }
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('feedbackForm');
+    const backBtn = document.getElementById('feedbackBackBtn');
+    const nextBtn = document.getElementById('feedbackNextBtn');
     const submitBtn = document.getElementById('feedbackSubmitBtn');
     const status = document.getElementById('feedbackFormStatus');
     const successPanel = document.getElementById('feedbackSuccess');
+    const rewardCodeValue = document.getElementById('rewardCodeValue');
+    const wizardProgress = document.getElementById('wizardProgress');
+    const wizardStepLabel = document.getElementById('wizardStepLabel');
+    const wizardStepTitle = document.getElementById('wizardStepTitle');
+    const wizardProgressFill = document.getElementById('wizardProgressFill');
     const subscriptionFollowup = document.getElementById('subscriptionFollowup');
+    const steps = Array.from(form?.querySelectorAll('.survey-section') || []);
+    const rewardCodeEncoded = 'U3VydmV5MjAyNl9GcmVlV2Vlaw==';
+    let currentStepIndex = 0;
 
-    if (!form || !submitBtn || !status || !successPanel || !subscriptionFollowup) return;
+    if (
+      !form ||
+      !backBtn ||
+      !nextBtn ||
+      !submitBtn ||
+      !status ||
+      !successPanel ||
+      !rewardCodeValue ||
+      !wizardProgress ||
+      !wizardStepLabel ||
+      !wizardStepTitle ||
+      !wizardProgressFill ||
+      !subscriptionFollowup ||
+      steps.length === 0
+    ) return;
 
     const otherWrappers = Array.from(form.querySelectorAll('[data-other-wrapper]'));
     const otherToggles = Array.from(form.querySelectorAll('[data-other-target]'));
@@ -1008,6 +1153,19 @@ const rewardCode = 'Survey2026_FreeWeek';
       }
 
       field.value = '';
+    };
+
+    const isHiddenInsideStep = (element, step) => {
+      let current = element.parentElement;
+
+      while (current && current !== step) {
+        if (current.hidden) {
+          return true;
+        }
+        current = current.parentElement;
+      }
+
+      return false;
     };
 
     const syncOtherWrapper = (wrapperId) => {
@@ -1052,30 +1210,95 @@ const rewardCode = 'Survey2026_FreeWeek';
       syncAllOtherWrappers();
     };
 
-    const validateCheckboxGroup = (group) => {
-      const checkboxes = Array.from(group.querySelectorAll('input[type="checkbox"]')).filter((input) => !input.disabled);
+    const validateCheckboxGroup = (group, reportErrors = true) => {
+      const step = group.closest('.survey-section') || group;
+      const checkboxes = Array.from(group.querySelectorAll('input[type="checkbox"]')).filter(
+        (input) => !input.disabled && !isHiddenInsideStep(input, step)
+      );
       const valid = checkboxes.some((input) => input.checked);
       const error = group.querySelector('.group-error');
 
-      group.classList.toggle('has-error', !valid);
+      group.classList.toggle('has-error', !valid && reportErrors);
       if (error) {
-        error.hidden = valid;
+        error.hidden = valid || !reportErrors;
       }
 
       return valid;
     };
 
-    const validateRequiredCheckboxGroups = () => {
-      let firstInvalidGroup = null;
+    const validateRequiredCheckboxGroups = (container, reportErrors = true) => {
+      const groups = requiredCheckboxGroups.filter((group) => container.contains(group));
 
-      requiredCheckboxGroups.forEach((group) => {
-        const isValid = validateCheckboxGroup(group);
-        if (!isValid && !firstInvalidGroup) {
-          firstInvalidGroup = group;
+      for (const group of groups) {
+        if (!validateCheckboxGroup(group, reportErrors)) {
+          return group;
         }
+      }
+
+      return null;
+    };
+
+    const validateStep = (step, reportErrors = true) => {
+      const invalidGroup = validateRequiredCheckboxGroups(step, reportErrors);
+      if (invalidGroup) {
+        if (reportErrors) {
+          invalidGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          invalidGroup.querySelector('input')?.focus();
+        }
+        return false;
+      }
+
+      const fields = Array.from(step.querySelectorAll('input, textarea, select')).filter(
+        (field) => !field.disabled && !isHiddenInsideStep(field, step)
+      );
+
+      for (const field of fields) {
+        if (!field.checkValidity()) {
+          if (reportErrors) {
+            field.reportValidity();
+            field.focus();
+          }
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    const updateWizard = () => {
+      steps.forEach((step, index) => {
+        step.hidden = index !== currentStepIndex;
       });
 
-      return firstInvalidGroup;
+      const totalSteps = steps.length;
+      const currentStep = steps[currentStepIndex];
+      const currentTitle = currentStep.querySelector('.section-header h3')?.textContent || `Step ${currentStepIndex + 1}`;
+      const progressPercent = ((currentStepIndex + 1) / totalSteps) * 100;
+      const isFinalStep = currentStepIndex === totalSteps - 1;
+
+      wizardStepLabel.textContent = `Step ${currentStepIndex + 1} of ${totalSteps}`;
+      wizardStepTitle.textContent = currentTitle;
+      wizardProgress.setAttribute('aria-valuenow', String(currentStepIndex + 1));
+      wizardProgressFill.style.width = `${progressPercent}%`;
+
+      backBtn.disabled = currentStepIndex === 0;
+      nextBtn.classList.toggle('is-hidden', isFinalStep);
+      submitBtn.classList.toggle('is-hidden', !isFinalStep);
+    };
+
+    const goToStep = (stepIndex) => {
+      currentStepIndex = Math.max(0, Math.min(stepIndex, steps.length - 1));
+      clearStatus();
+      updateWizard();
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const decodeRewardCode = () => {
+      try {
+        return window.atob(rewardCodeEncoded);
+      } catch (_error) {
+        return '';
+      }
     };
 
     otherToggles.forEach((input) => {
@@ -1096,19 +1319,38 @@ const rewardCode = 'Survey2026_FreeWeek';
       });
     });
 
+    backBtn.addEventListener('click', () => {
+      goToStep(currentStepIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (!validateStep(steps[currentStepIndex])) {
+        setStatus('Please complete every question on this step before continuing.');
+        return;
+      }
+
+      goToStep(currentStepIndex + 1);
+    });
+
     syncSubscriptionFollowup();
     syncAllOtherWrappers();
+    updateWizard();
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       clearStatus();
 
-      const invalidGroup = validateRequiredCheckboxGroups();
-      if (invalidGroup) {
-        setStatus('Please answer the highlighted checkbox question before submitting.');
-        invalidGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        invalidGroup.querySelector('input')?.focus();
-        return;
+      for (let index = 0; index < steps.length; index += 1) {
+        if (!validateStep(steps[index], false)) {
+          goToStep(index);
+          validateStep(steps[index], true);
+          setStatus(
+            index === currentStepIndex
+              ? 'Please complete every question on this step before submitting.'
+              : 'Please finish the remaining survey steps before submitting.'
+          );
+          return;
+        }
       }
 
       const originalLabel = submitBtn.textContent;
@@ -1129,6 +1371,9 @@ const rewardCode = 'Survey2026_FreeWeek';
           throw new Error('Request failed');
         }
 
+        rewardCodeValue.textContent = decodeRewardCode();
+        wizardProgress.hidden = true;
+        status.classList.add('is-hidden');
         form.hidden = true;
         successPanel.classList.remove('is-hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
