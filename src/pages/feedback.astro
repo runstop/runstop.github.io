@@ -1,0 +1,1144 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const rewardCode = 'Survey2026_FreeWeek';
+---
+
+<Layout
+  title="Headzone Feedback Survey - Art is the Game"
+  description="Share your feedback about Headzone and receive a free week of Headzone Pro."
+  currentPage=""
+  lang="en-US"
+>
+  <div class="feedback-page">
+    <div class="container">
+      <header class="hero fade-in">
+        <span class="eyebrow">Headzone feedback survey</span>
+        <h1>Help shape Headzone</h1>
+        <p class="hero-copy">
+          I&apos;m building Headzone to help athletes sharpen focus under pressure, recover faster after mistakes,
+          and carry better mental performance into the real world. This short survey helps me understand what is
+          working, what is missing, and what would make the app more valuable for you.
+        </p>
+        <div class="hero-meta">
+          <span>Estimated time: 4-6 minutes</span>
+          <span>Reward: 1 free week of Headzone Pro</span>
+        </div>
+      </header>
+
+      <section class="intro-card slide-up">
+        <h2>Before you start</h2>
+        <p>
+          The survey is mobile-first and works directly inside Headzone&apos;s in-app browser. Once you submit, your
+          thank-you screen will show the offer code you can redeem from the app&apos;s subscription screen or Awards area.
+        </p>
+      </section>
+
+      <section id="feedbackSuccess" class="success-panel is-hidden" aria-live="polite" tabindex="-1">
+        <div class="success-copy">
+          <span class="success-kicker">Thank you</span>
+          <h2>Thanks for helping shape Headzone</h2>
+          <p>
+            As promised, here is your free week of Headzone Pro. You can redeem your code from the Headzone paywall
+            or Awards area by tapping <strong>Redeem Free Week Code</strong>.
+          </p>
+        </div>
+
+        <div class="reward-card">
+          <div>
+            <p class="reward-label">Your reward</p>
+            <h3>1 free week of Headzone Pro</h3>
+          </div>
+          <div class="reward-code-block">
+            <span class="reward-code-label">Redemption code</span>
+            <code>{rewardCode}</code>
+          </div>
+        </div>
+
+        <div class="redeem-steps">
+          <h3>How to redeem</h3>
+          <ol>
+            <li>Open Headzone.</li>
+            <li>Go to the upgrade or subscription screen.</li>
+            <li>Tap <strong>Redeem Free Week Code</strong>.</li>
+            <li>Enter the code shown above.</li>
+          </ol>
+          <p class="redeem-note">
+            If the code does not apply right away, make sure you are signed into the App Store account you use for
+            Headzone subscriptions.
+          </p>
+        </div>
+      </section>
+
+      <section class="form-shell slide-up">
+        <div class="form-shell-header">
+          <div>
+            <p class="section-label">Survey</p>
+            <h2>Tell me what&apos;s working and what&apos;s missing</h2>
+          </div>
+          <p class="privacy-note">
+            Your responses are sent through the same secure FormSubmit flow already used on artisthegame.com and land
+            in your support inbox.
+          </p>
+        </div>
+
+        <p id="feedbackFormStatus" class="form-status is-hidden" role="alert"></p>
+
+        <form
+          id="feedbackForm"
+          class="feedback-form"
+          action="https://formsubmit.co/ajax/pfarnam@icloud.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Headzone Feedback Survey" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="submission_source" value="headzone-feedback-survey" />
+          <input type="hidden" name="submission_origin" value="artisthegame.com/feedback" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <section class="survey-section">
+            <div class="section-header">
+              <span class="section-number">01</span>
+              <div>
+                <h3>About you</h3>
+                <p>A little context helps me understand your answers.</p>
+              </div>
+            </div>
+
+            <fieldset class="question-card">
+              <legend>1. What best describes you? <span class="required">*</span></legend>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="radio" name="q01_role" value="Competitive athlete" required /> <span>Competitive athlete</span></label>
+                <label class="choice-pill"><input type="radio" name="q01_role" value="Recreational athlete" /> <span>Recreational athlete</span></label>
+                <label class="choice-pill"><input type="radio" name="q01_role" value="Coach or trainer" /> <span>Coach or trainer</span></label>
+                <label class="choice-pill"><input type="radio" name="q01_role" value="Parent of an athlete" /> <span>Parent of an athlete</span></label>
+                <label class="choice-pill"><input type="radio" name="q01_role" value="Student" /> <span>Student</span></label>
+                <label class="choice-pill"><input type="radio" name="q01_role" value="Working professional" /> <span>Working professional</span></label>
+                <label class="choice-pill"><input type="radio" name="q01_role" value="Other" data-other-target="q01RoleOther" /> <span>Other</span></label>
+              </div>
+              <div id="q01RoleOther" class="other-input" data-other-wrapper hidden>
+                <label for="q01RoleOtherText">Tell me a little more</label>
+                <input id="q01RoleOtherText" type="text" name="q01_role_other" placeholder="Your role" data-required-when-visible="true" disabled />
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>2. Which sport or performance area matters most to you right now? <span class="required">*</span></legend>
+              <label class="question-label" for="q02PrimaryFocus">Your answer</label>
+              <input id="q02PrimaryFocus" type="text" name="q02_primary_focus" placeholder="Sport, position, or performance area" required />
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>3. What level are you currently competing or performing at? <span class="required">*</span></legend>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="radio" name="q03_level" value="Youth / junior" required /> <span>Youth / junior</span></label>
+                <label class="choice-pill"><input type="radio" name="q03_level" value="High school" /> <span>High school</span></label>
+                <label class="choice-pill"><input type="radio" name="q03_level" value="College / university" /> <span>College / university</span></label>
+                <label class="choice-pill"><input type="radio" name="q03_level" value="Amateur adult" /> <span>Amateur adult</span></label>
+                <label class="choice-pill"><input type="radio" name="q03_level" value="Semi-pro" /> <span>Semi-pro</span></label>
+                <label class="choice-pill"><input type="radio" name="q03_level" value="Professional" /> <span>Professional</span></label>
+                <label class="choice-pill"><input type="radio" name="q03_level" value="Not sport-specific" /> <span>Not sport-specific</span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="survey-section">
+            <div class="section-header">
+              <span class="section-number">02</span>
+              <div>
+                <h3>Why you tried Headzone</h3>
+                <p>I want to know what promise mattered most when you first opened the app.</p>
+              </div>
+            </div>
+
+            <fieldset class="question-card" data-required-checkbox-group>
+              <legend>4. What made you download Headzone? <span class="required">*</span></legend>
+              <p class="helper-text">Select all that apply.</p>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Improve focus" /> <span>Improve focus</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Improve reaction speed" /> <span>Improve reaction speed</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Improve decision-making" /> <span>Improve decision-making</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Reduce mistakes under pressure" /> <span>Reduce mistakes under pressure</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Build consistency" /> <span>Build consistency</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Prepare for competition" /> <span>Prepare for competition</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Curiosity" /> <span>Curiosity</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Recommendation from someone else" /> <span>Recommendation from someone else</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q04_download_reasons" value="Other" data-other-target="q04OtherReason" /> <span>Other</span></label>
+              </div>
+              <p class="group-error" hidden>Please choose at least one reason.</p>
+              <div id="q04OtherReason" class="other-input" data-other-wrapper hidden>
+                <label for="q04OtherReasonText">What else led you to try it?</label>
+                <input id="q04OtherReasonText" type="text" name="q04_download_reasons_other" placeholder="Your answer" data-required-when-visible="true" disabled />
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>5. What were you hoping Headzone would help you improve first? <span class="required">*</span></legend>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="radio" name="q05_first_improvement" value="Recognition speed" required /> <span>Recognition speed</span></label>
+                <label class="choice-pill"><input type="radio" name="q05_first_improvement" value="Precision / accuracy" /> <span>Precision / accuracy</span></label>
+                <label class="choice-pill"><input type="radio" name="q05_first_improvement" value="Composure under pressure" /> <span>Composure under pressure</span></label>
+                <label class="choice-pill"><input type="radio" name="q05_first_improvement" value="Reset after mistakes" /> <span>Reset after mistakes</span></label>
+                <label class="choice-pill"><input type="radio" name="q05_first_improvement" value="Endurance / staying sharp longer" /> <span>Endurance / staying sharp longer</span></label>
+                <label class="choice-pill"><input type="radio" name="q05_first_improvement" value="General focus" /> <span>General focus</span></label>
+                <label class="choice-pill"><input type="radio" name="q05_first_improvement" value="Other" data-other-target="q05OtherImprovement" /> <span>Other</span></label>
+              </div>
+              <div id="q05OtherImprovement" class="other-input" data-other-wrapper hidden>
+                <label for="q05OtherImprovementText">What were you hoping to improve?</label>
+                <input id="q05OtherImprovementText" type="text" name="q05_first_improvement_other" placeholder="Your answer" data-required-when-visible="true" disabled />
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>6. Before using Headzone, how clear was the benefit of the app to you? <span class="required">*</span></legend>
+              <p class="helper-text">1 = Not clear at all, 5 = Extremely clear</p>
+              <div class="scale-grid">
+                <label class="scale-pill"><input type="radio" name="q06_benefit_clarity" value="1" required /> <span>1</span></label>
+                <label class="scale-pill"><input type="radio" name="q06_benefit_clarity" value="2" /> <span>2</span></label>
+                <label class="scale-pill"><input type="radio" name="q06_benefit_clarity" value="3" /> <span>3</span></label>
+                <label class="scale-pill"><input type="radio" name="q06_benefit_clarity" value="4" /> <span>4</span></label>
+                <label class="scale-pill"><input type="radio" name="q06_benefit_clarity" value="5" /> <span>5</span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="survey-section">
+            <div class="section-header">
+              <span class="section-number">03</span>
+              <div>
+                <h3>First-use experience</h3>
+                <p>This helps identify the roughest parts of the early user journey.</p>
+              </div>
+            </div>
+
+            <fieldset class="question-card">
+              <legend>7. How easy was it to get started? <span class="required">*</span></legend>
+              <p class="helper-text">1 = Very confusing, 5 = Very easy</p>
+              <div class="scale-grid">
+                <label class="scale-pill"><input type="radio" name="q07_getting_started" value="1" required /> <span>1</span></label>
+                <label class="scale-pill"><input type="radio" name="q07_getting_started" value="2" /> <span>2</span></label>
+                <label class="scale-pill"><input type="radio" name="q07_getting_started" value="3" /> <span>3</span></label>
+                <label class="scale-pill"><input type="radio" name="q07_getting_started" value="4" /> <span>4</span></label>
+                <label class="scale-pill"><input type="radio" name="q07_getting_started" value="5" /> <span>5</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>8. Which part of the first-use experience felt weakest? <span class="required">*</span></legend>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Onboarding" required /> <span>Onboarding</span></label>
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Choosing a mode" /> <span>Choosing a mode</span></label>
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Understanding the training goal" /> <span>Understanding the training goal</span></label>
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Audio / settings" /> <span>Audio / settings</span></label>
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Paywall / subscription messaging" /> <span>Paywall / subscription messaging</span></label>
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Results / coaching explanation" /> <span>Results / coaching explanation</span></label>
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Nothing felt weak" /> <span>Nothing felt weak</span></label>
+                <label class="choice-pill"><input type="radio" name="q08_weakest_first_use" value="Other" data-other-target="q08WeakestOther" /> <span>Other</span></label>
+              </div>
+              <div id="q08WeakestOther" class="other-input" data-other-wrapper hidden>
+                <label for="q08WeakestOtherText">What felt weakest?</label>
+                <input id="q08WeakestOtherText" type="text" name="q08_weakest_first_use_other" placeholder="Your answer" data-required-when-visible="true" disabled />
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>9. If anything confused you early on, what was it?</legend>
+              <label class="question-label" for="q09EarlyConfusion">Optional details</label>
+              <textarea id="q09EarlyConfusion" name="q09_early_confusion" rows="4" placeholder="Anything you remember from the first session or two"></textarea>
+            </fieldset>
+          </section>
+
+          <section class="survey-section">
+            <div class="section-header">
+              <span class="section-number">04</span>
+              <div>
+                <h3>Training experience</h3>
+                <p>I&apos;m especially interested in how the drills map to real-world performance.</p>
+              </div>
+            </div>
+
+            <fieldset class="question-card">
+              <legend>10. How often have you used Headzone so far? <span class="required">*</span></legend>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="radio" name="q10_usage_frequency" value="Just once" required /> <span>Just once</span></label>
+                <label class="choice-pill"><input type="radio" name="q10_usage_frequency" value="2-3 sessions" /> <span>2-3 sessions</span></label>
+                <label class="choice-pill"><input type="radio" name="q10_usage_frequency" value="4-10 sessions" /> <span>4-10 sessions</span></label>
+                <label class="choice-pill"><input type="radio" name="q10_usage_frequency" value="11-25 sessions" /> <span>11-25 sessions</span></label>
+                <label class="choice-pill"><input type="radio" name="q10_usage_frequency" value="25+ sessions" /> <span>25+ sessions</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card" data-required-checkbox-group>
+              <legend>11. Which training modes have felt most useful? <span class="required">*</span></legend>
+              <p class="helper-text">Select all that apply.</p>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Modern" /> <span>Modern</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Classic" /> <span>Classic</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Recall" /> <span>Recall</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Letter" /> <span>Letter</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Moving Target" /> <span>Moving Target</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Unique Figure" /> <span>Unique Figure</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Squares" /> <span>Squares</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Larger Number" /> <span>Larger Number</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q11_useful_modes" value="Position Shuffle" /> <span>Position Shuffle</span></label>
+              </div>
+              <p class="group-error" hidden>Please choose at least one training mode.</p>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>12. Which training modes felt least useful or least clear?</legend>
+              <label class="question-label" for="q12LeastUsefulModes">Optional details</label>
+              <textarea id="q12LeastUsefulModes" name="q12_least_useful_modes" rows="4" placeholder="Tell me which ones missed the mark and why"></textarea>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>13. How well do the training sessions feel connected to real-world performance? <span class="required">*</span></legend>
+              <p class="helper-text">1 = Feels abstract / disconnected, 5 = Feels directly useful</p>
+              <div class="scale-grid">
+                <label class="scale-pill"><input type="radio" name="q13_real_world_connection" value="1" required /> <span>1</span></label>
+                <label class="scale-pill"><input type="radio" name="q13_real_world_connection" value="2" /> <span>2</span></label>
+                <label class="scale-pill"><input type="radio" name="q13_real_world_connection" value="3" /> <span>3</span></label>
+                <label class="scale-pill"><input type="radio" name="q13_real_world_connection" value="4" /> <span>4</span></label>
+                <label class="scale-pill"><input type="radio" name="q13_real_world_connection" value="5" /> <span>5</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>14. Have you noticed any real-world benefit yet?</legend>
+              <p class="helper-text">If yes, where did you notice it? If not yet, what would need to happen for the app to feel more valuable?</p>
+              <label class="question-label" for="q14RealWorldBenefit">Optional details</label>
+              <textarea id="q14RealWorldBenefit" name="q14_real_world_benefit" rows="4" placeholder="Your answer"></textarea>
+            </fieldset>
+          </section>
+
+          <section class="survey-section">
+            <div class="section-header">
+              <span class="section-number">05</span>
+              <div>
+                <h3>Coaching and results</h3>
+                <p>This section is about the post-session feedback and coaching screens.</p>
+              </div>
+            </div>
+
+            <fieldset class="question-card">
+              <legend>15. How useful is the post-session coaching? <span class="required">*</span></legend>
+              <p class="helper-text">1 = Not useful, 5 = Extremely useful</p>
+              <div class="scale-grid">
+                <label class="scale-pill"><input type="radio" name="q15_post_session_coaching" value="1" required /> <span>1</span></label>
+                <label class="scale-pill"><input type="radio" name="q15_post_session_coaching" value="2" /> <span>2</span></label>
+                <label class="scale-pill"><input type="radio" name="q15_post_session_coaching" value="3" /> <span>3</span></label>
+                <label class="scale-pill"><input type="radio" name="q15_post_session_coaching" value="4" /> <span>4</span></label>
+                <label class="scale-pill"><input type="radio" name="q15_post_session_coaching" value="5" /> <span>5</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>16. What kind of coaching do you want more of?</legend>
+              <p class="helper-text">Select all that apply.</p>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Clear explanation of what happened" /> <span>Clear explanation of what happened</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="More specific next-step advice" /> <span>More specific next-step advice</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Stronger real-world performance language" /> <span>Stronger real-world performance language</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Better encouragement / motivation" /> <span>Better encouragement / motivation</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Better workout recommendations" /> <span>Better workout recommendations</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="More visual explanation of mistakes or timing" /> <span>More visual explanation of mistakes or timing</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Less text, more concise summaries" /> <span>Less text, more concise summaries</span></label>
+                <label class="choice-pill"><input type="checkbox" name="q16_more_coaching" value="Other" data-other-target="q16OtherCoaching" /> <span>Other</span></label>
+              </div>
+              <div id="q16OtherCoaching" class="other-input" data-other-wrapper hidden>
+                <label for="q16OtherCoachingText">What kind of coaching do you want more of?</label>
+                <input id="q16OtherCoachingText" type="text" name="q16_more_coaching_other" placeholder="Your answer" data-required-when-visible="true" disabled />
+              </div>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>17. If you could improve one thing about the results or coaching screen, what would it be?</legend>
+              <label class="question-label" for="q17ImproveResults">Optional details</label>
+              <textarea id="q17ImproveResults" name="q17_results_screen_improvement" rows="4" placeholder="Your answer"></textarea>
+            </fieldset>
+          </section>
+
+          <section class="survey-section">
+            <div class="section-header">
+              <span class="section-number">06</span>
+              <div>
+                <h3>Subscription and value</h3>
+                <p>I want to understand where the current value proposition feels strong or weak.</p>
+              </div>
+            </div>
+
+            <fieldset class="question-card">
+              <legend>18. Which statement best matches you? <span class="required">*</span></legend>
+              <div class="choices-grid">
+                <label class="choice-pill"><input type="radio" name="q18_subscription_status" value="already-subscribe" required /> <span>I already subscribe to Headzone Pro</span></label>
+                <label class="choice-pill"><input type="radio" name="q18_subscription_status" value="free-trial" /> <span>I am currently in the free trial</span></label>
+                <label class="choice-pill"><input type="radio" name="q18_subscription_status" value="interested-not-ready" /> <span>I am interested, but not ready yet</span></label>
+                <label class="choice-pill"><input type="radio" name="q18_subscription_status" value="not-enough-value" /> <span>I do not currently see enough value to subscribe</span></label>
+                <label class="choice-pill"><input type="radio" name="q18_subscription_status" value="did-not-understand-pro" /> <span>I did not understand what Pro would unlock</span></label>
+              </div>
+            </fieldset>
+
+            <div id="subscriptionFollowup" class="conditional-section" hidden>
+              <fieldset class="question-card">
+                <legend>19. What would make Headzone Pro feel worth paying for?</legend>
+                <p class="helper-text">Select all that apply.</p>
+                <div class="choices-grid">
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Better coaching insights" disabled /> <span>Better coaching insights</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Stronger personalized workouts" disabled /> <span>Stronger personalized workouts</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="More training modes" disabled /> <span>More training modes</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Better progress tracking" disabled /> <span>Better progress tracking</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Better Game Center / leaderboard features" disabled /> <span>Better Game Center / leaderboard features</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Better sound / music customization" disabled /> <span>Better sound / music customization</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="More obvious real-world performance benefit" disabled /> <span>More obvious real-world performance benefit</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Lower price" disabled /> <span>Lower price</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="More generous trial / offer" disabled /> <span>More generous trial / offer</span></label>
+                  <label class="choice-pill"><input type="checkbox" name="q19_pro_value" value="Other" data-other-target="q19OtherValue" disabled /> <span>Other</span></label>
+                </div>
+                <div id="q19OtherValue" class="other-input" data-other-wrapper hidden>
+                  <label for="q19OtherValueText">What would make it feel worth paying for?</label>
+                  <input id="q19OtherValueText" type="text" name="q19_pro_value_other" placeholder="Your answer" data-required-when-visible="true" disabled />
+                </div>
+              </fieldset>
+
+              <fieldset class="question-card">
+                <legend>20. If you decided not to subscribe today, what held you back most?</legend>
+                <label class="question-label" for="q20HoldBack">Optional details</label>
+                <textarea id="q20HoldBack" name="q20_hold_back" rows="4" placeholder="Your answer" disabled></textarea>
+              </fieldset>
+            </div>
+          </section>
+
+          <section class="survey-section">
+            <div class="section-header">
+              <span class="section-number">07</span>
+              <div>
+                <h3>Closing</h3>
+                <p>The final two questions help prioritize what I should build next.</p>
+              </div>
+            </div>
+
+            <fieldset class="question-card">
+              <legend>21. What is the one thing you most want me to improve next in Headzone? <span class="required">*</span></legend>
+              <label class="question-label" for="q21ImproveNext">Your answer</label>
+              <textarea id="q21ImproveNext" name="q21_improve_next" rows="4" placeholder="The one change you would most want next" required></textarea>
+            </fieldset>
+
+            <fieldset class="question-card">
+              <legend>22. If you want, leave your email so I can follow up about your feedback or invite you to test improvements.</legend>
+              <p class="helper-text">Optional.</p>
+              <label class="question-label" for="q22Email">Email address</label>
+              <input id="q22Email" type="email" name="email" inputmode="email" autocomplete="email" placeholder="name@example.com" />
+            </fieldset>
+          </section>
+
+          <div class="submit-row">
+            <p class="submit-note">
+              After you submit, your free-week code will appear immediately on this page.
+            </p>
+            <button id="feedbackSubmitBtn" type="submit" class="submit-btn">Send survey and show my code</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .feedback-page {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top, rgba(0, 255, 65, 0.14), transparent 28%),
+      linear-gradient(180deg, #040404 0%, #000000 100%);
+    padding: 108px 0 88px;
+  }
+
+  .container {
+    width: min(100%, 980px);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero,
+  .intro-card,
+  .success-panel,
+  .form-shell {
+    border: 1px solid rgba(0, 255, 65, 0.18);
+    background: rgba(12, 12, 12, 0.92);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero {
+    border-radius: 28px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .eyebrow,
+  .success-kicker,
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8dffad;
+    font-weight: 800;
+  }
+
+  .hero h1 {
+    margin: 16px 0 14px;
+    font-size: clamp(2.8rem, 8vw, 4.4rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 18px rgba(0, 255, 65, 0.24);
+  }
+
+  .hero-copy,
+  .intro-card p,
+  .privacy-note,
+  .submit-note,
+  .helper-text,
+  .redeem-note {
+    color: #d6d6d6;
+  }
+
+  .hero-copy {
+    max-width: 760px;
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .hero-meta span {
+    border-radius: 999px;
+    border: 1px solid rgba(0, 255, 65, 0.22);
+    background: rgba(0, 255, 65, 0.08);
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    color: #f0f0f0;
+  }
+
+  .intro-card {
+    border-radius: 24px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+  }
+
+  .intro-card h2,
+  .form-shell-header h2,
+  .success-panel h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+  }
+
+  .success-panel {
+    border-radius: 26px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .success-panel.is-hidden,
+  .form-status.is-hidden {
+    display: none;
+  }
+
+  .success-copy p {
+    margin: 0;
+    max-width: 720px;
+    line-height: 1.7;
+  }
+
+  .reward-card {
+    margin: 26px 0 22px;
+    border-radius: 22px;
+    border: 1px solid rgba(0, 255, 65, 0.22);
+    background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.03));
+    padding: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .reward-label,
+  .reward-code-label {
+    margin: 0 0 6px;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8dffad;
+  }
+
+  .reward-card h3,
+  .redeem-steps h3 {
+    margin: 0;
+    font-size: 1.35rem;
+  }
+
+  .reward-code-block {
+    min-width: min(100%, 320px);
+  }
+
+  .reward-code-block code {
+    display: inline-block;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: #050505;
+    border: 1px dashed rgba(0, 255, 65, 0.4);
+    color: #ffffff;
+    font-size: clamp(1rem, 3vw, 1.35rem);
+    letter-spacing: 0.12em;
+    word-break: break-word;
+  }
+
+  .redeem-steps ol {
+    margin: 14px 0 0;
+    padding-left: 20px;
+    color: #f0f0f0;
+  }
+
+  .redeem-steps li + li {
+    margin-top: 8px;
+  }
+
+  .form-shell {
+    border-radius: 30px;
+    padding: 28px;
+  }
+
+  .form-shell-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .privacy-note {
+    max-width: 380px;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .form-status {
+    margin: 0 0 18px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-weight: 600;
+  }
+
+  .form-status.is-error {
+    background: rgba(255, 92, 92, 0.12);
+    border: 1px solid rgba(255, 92, 92, 0.38);
+    color: #ffd8d8;
+  }
+
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .survey-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-header {
+    display: flex;
+    gap: 16px;
+    align-items: start;
+    padding-top: 8px;
+  }
+
+  .section-number {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    color: #9dffb8;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1.45rem;
+  }
+
+  .section-header p {
+    margin: 6px 0 0;
+    color: #bbbbbb;
+  }
+
+  .question-card,
+  .conditional-section {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .question-card {
+    padding: 22px;
+  }
+
+  .question-card.has-error {
+    border-color: rgba(255, 92, 92, 0.6);
+    box-shadow: 0 0 0 1px rgba(255, 92, 92, 0.2);
+  }
+
+  .conditional-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  fieldset {
+    min-width: 0;
+    margin: 0;
+  }
+
+  legend {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding: 0;
+  }
+
+  .required {
+    color: #ff7474;
+  }
+
+  .helper-text,
+  .group-error,
+  .question-label {
+    font-size: 0.95rem;
+  }
+
+  .helper-text,
+  .question-label {
+    margin: 0 0 12px;
+  }
+
+  .group-error {
+    margin: 12px 0 0;
+    color: #ffb8b8;
+    font-weight: 600;
+  }
+
+  .choices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .choice-pill,
+  .scale-pill {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 14px;
+    color: #f2f2f2;
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .choice-pill:hover,
+  .scale-pill:hover {
+    transform: translateY(-1px);
+    border-color: rgba(0, 255, 65, 0.34);
+    background: rgba(0, 255, 65, 0.06);
+  }
+
+  .choice-pill input,
+  .scale-pill input {
+    margin: 0;
+    accent-color: #00ff41;
+    flex-shrink: 0;
+  }
+
+  .choice-pill span {
+    line-height: 1.45;
+  }
+
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .scale-pill {
+    justify-content: center;
+    padding: 16px 12px;
+  }
+
+  .scale-pill span {
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  textarea {
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background: #0e0e0e;
+    color: #ffffff;
+    padding: 14px 16px;
+    font: inherit;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+
+  input[type='text']:focus,
+  input[type='email']:focus,
+  textarea:focus {
+    outline: none;
+    border-color: rgba(0, 255, 65, 0.7);
+    box-shadow: 0 0 0 4px rgba(0, 255, 65, 0.11);
+    background: #121212;
+  }
+
+  textarea {
+    min-height: 128px;
+    resize: vertical;
+  }
+
+  .other-input {
+    margin-top: 14px;
+  }
+
+  .other-input label {
+    display: block;
+    margin-bottom: 8px;
+    color: #dadada;
+    font-size: 0.96rem;
+  }
+
+  .submit-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-top: 8px;
+  }
+
+  .submit-note {
+    flex: 1 1 280px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .submit-btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #00ff41, #7dff97);
+    color: #031504;
+    padding: 16px 26px;
+    font: inherit;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
+    box-shadow: 0 14px 30px rgba(0, 255, 65, 0.22);
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 36px rgba(0, 255, 65, 0.28);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.72;
+    cursor: wait;
+    transform: none;
+    box-shadow: none;
+  }
+
+  @media (max-width: 720px) {
+    .feedback-page {
+      padding: 92px 0 72px;
+    }
+
+    .hero,
+    .intro-card,
+    .success-panel,
+    .form-shell {
+      padding: 22px;
+      border-radius: 22px;
+    }
+
+    .section-header {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .section-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+    }
+
+    .scale-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .scale-pill {
+      padding: 12px 8px;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .reward-card {
+      padding: 18px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .container {
+      padding: 0 14px;
+    }
+
+    .choices-grid,
+    .scale-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .scale-pill {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('feedbackForm');
+    const submitBtn = document.getElementById('feedbackSubmitBtn');
+    const status = document.getElementById('feedbackFormStatus');
+    const successPanel = document.getElementById('feedbackSuccess');
+    const subscriptionFollowup = document.getElementById('subscriptionFollowup');
+
+    if (!form || !submitBtn || !status || !successPanel || !subscriptionFollowup) return;
+
+    const otherWrappers = Array.from(form.querySelectorAll('[data-other-wrapper]'));
+    const otherToggles = Array.from(form.querySelectorAll('[data-other-target]'));
+    const subscriptionInputs = Array.from(form.querySelectorAll('input[name="q18_subscription_status"]'));
+    const requiredCheckboxGroups = Array.from(form.querySelectorAll('[data-required-checkbox-group]'));
+
+    const setStatus = (message) => {
+      status.textContent = message;
+      status.classList.remove('is-hidden');
+      status.classList.add('is-error');
+    };
+
+    const clearStatus = () => {
+      status.textContent = '';
+      status.classList.add('is-hidden');
+      status.classList.remove('is-error');
+    };
+
+    const clearFieldValue = (field) => {
+      if (field instanceof HTMLInputElement && (field.type === 'checkbox' || field.type === 'radio')) {
+        field.checked = false;
+        return;
+      }
+
+      field.value = '';
+    };
+
+    const syncOtherWrapper = (wrapperId) => {
+      const wrapper = document.getElementById(wrapperId);
+      if (!wrapper) return;
+
+      const relatedToggles = Array.from(form.querySelectorAll(`[data-other-target="${wrapperId}"]`));
+      const isVisible = relatedToggles.some((input) => !input.disabled && input.checked);
+
+      wrapper.hidden = !isVisible;
+
+      Array.from(wrapper.querySelectorAll('input, textarea')).forEach((field) => {
+        const shouldRequire = isVisible && field.dataset.requiredWhenVisible === 'true';
+        field.disabled = !isVisible;
+        field.required = shouldRequire;
+
+        if (!isVisible) {
+          clearFieldValue(field);
+        }
+      });
+    };
+
+    const syncAllOtherWrappers = () => {
+      otherWrappers.forEach((wrapper) => syncOtherWrapper(wrapper.id));
+    };
+
+    const syncSubscriptionFollowup = () => {
+      const selectedValue = subscriptionInputs.find((input) => input.checked)?.value;
+      const shouldShow = selectedValue && selectedValue !== 'already-subscribe';
+
+      subscriptionFollowup.hidden = !shouldShow;
+
+      Array.from(subscriptionFollowup.querySelectorAll('input, textarea')).forEach((field) => {
+        field.disabled = !shouldShow;
+        field.required = shouldShow && field.dataset.requiredWhenVisible === 'true';
+
+        if (!shouldShow) {
+          clearFieldValue(field);
+        }
+      });
+
+      syncAllOtherWrappers();
+    };
+
+    const validateCheckboxGroup = (group) => {
+      const checkboxes = Array.from(group.querySelectorAll('input[type="checkbox"]')).filter((input) => !input.disabled);
+      const valid = checkboxes.some((input) => input.checked);
+      const error = group.querySelector('.group-error');
+
+      group.classList.toggle('has-error', !valid);
+      if (error) {
+        error.hidden = valid;
+      }
+
+      return valid;
+    };
+
+    const validateRequiredCheckboxGroups = () => {
+      let firstInvalidGroup = null;
+
+      requiredCheckboxGroups.forEach((group) => {
+        const isValid = validateCheckboxGroup(group);
+        if (!isValid && !firstInvalidGroup) {
+          firstInvalidGroup = group;
+        }
+      });
+
+      return firstInvalidGroup;
+    };
+
+    otherToggles.forEach((input) => {
+      input.addEventListener('change', () => {
+        syncOtherWrapper(input.dataset.otherTarget);
+      });
+    });
+
+    subscriptionInputs.forEach((input) => {
+      input.addEventListener('change', syncSubscriptionFollowup);
+    });
+
+    requiredCheckboxGroups.forEach((group) => {
+      Array.from(group.querySelectorAll('input[type="checkbox"]')).forEach((input) => {
+        input.addEventListener('change', () => {
+          validateCheckboxGroup(group);
+        });
+      });
+    });
+
+    syncSubscriptionFollowup();
+    syncAllOtherWrappers();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus();
+
+      const invalidGroup = validateRequiredCheckboxGroups();
+      if (invalidGroup) {
+        setStatus('Please answer the highlighted checkbox question before submitting.');
+        invalidGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        invalidGroup.querySelector('input')?.focus();
+        return;
+      }
+
+      const originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+
+        form.hidden = true;
+        successPanel.classList.remove('is-hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        successPanel.focus();
+      } catch (_error) {
+        setStatus('We could not send your survey right now. Please try again in a moment.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel || 'Send survey and show my code';
+      }
+    });
+  });
+</script>
