@@ -29,8 +29,8 @@ import Layout from '../layouts/Layout.astro';
           <span class="success-kicker">Thank you</span>
           <h2>Thanks for helping shape Headzone</h2>
           <p>
-            As promised, here is your free week of Headzone Pro. You can redeem your code from the Headzone paywall
-            or Awards area by tapping <strong>Redeem Free Week Code</strong>.
+            As promised, here is your free week of Headzone Pro. Use the button below to open Apple's redemption
+            screen with your code ready, or enter the code manually inside Headzone if you prefer.
           </p>
         </div>
 
@@ -45,17 +45,27 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
+        <div class="redeem-action-row">
+          <a
+            id="redeemNowButton"
+            class="redeem-now-btn"
+            href="#"
+            rel="nofollow"
+          >
+            Redeem In The App Store
+          </a>
+        </div>
+
         <div class="redeem-steps">
           <h3>How to redeem</h3>
           <ol>
-            <li>Open Headzone.</li>
-            <li>Go to the upgrade or subscription screen.</li>
-            <li>Tap <strong>Redeem Free Week Code</strong>.</li>
-            <li>Enter the code shown above.</li>
+            <li>Tap <strong>Redeem In The App Store</strong> above.</li>
+            <li>Confirm the free-week offer from Apple.</li>
+            <li>Return to Headzone and refresh if the upgrade does not appear right away.</li>
           </ol>
           <p class="redeem-note">
-            If the code does not apply right away, make sure you are signed into the App Store account you use for
-            Headzone subscriptions.
+            If you would rather redeem inside Headzone, open the upgrade screen and tap <strong>Redeem Free Week Code</strong>,
+            then enter the code shown above.
           </p>
         </div>
       </section>
@@ -412,6 +422,31 @@ import Layout from '../layouts/Layout.astro';
     min-width: min(100%, 320px);
   }
 
+  .redeem-action-row {
+    margin-bottom: 20px;
+  }
+
+  .redeem-now-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #8dffad 0%, #2df56d 100%);
+    color: #041105;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 16px 30px rgba(45, 245, 109, 0.18);
+  }
+
+  .redeem-now-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 34px rgba(45, 245, 109, 0.24);
+  }
+
   .reward-code-block code {
     display: inline-block;
     width: 100%;
@@ -760,11 +795,13 @@ import Layout from '../layouts/Layout.astro';
     const status = document.getElementById('feedbackFormStatus');
     const successPanel = document.getElementById('feedbackSuccess');
     const rewardCodeValue = document.getElementById('rewardCodeValue');
+    const redeemNowButton = document.getElementById('redeemNowButton');
     const submitBtn = document.getElementById('feedbackSubmitBtn');
 
-    if (!form || !status || !successPanel || !rewardCodeValue || !submitBtn) return;
+    if (!form || !status || !successPanel || !rewardCodeValue || !redeemNowButton || !submitBtn) return;
 
-    const rewardCodeEncoded = 'U3VydmV5MjAyNl9GcmVlV2Vlaw==';
+    const rewardCodeEncoded = 'UFJPRk9DVVM=';
+    const appStoreAppId = '1609763784';
     const otherWrappers = Array.from(form.querySelectorAll('[data-other-wrapper]'));
     const otherToggles = Array.from(form.querySelectorAll('[data-other-target]'));
 
@@ -834,6 +871,8 @@ import Layout from '../layouts/Layout.astro';
     };
 
     const decodeRewardCode = () => window.atob(rewardCodeEncoded);
+    const makeRedeemURL = (code) =>
+      `https://apps.apple.com/redeem?ctx=offercodes&id=${encodeURIComponent(appStoreAppId)}&code=${encodeURIComponent(code)}`;
 
     otherToggles.forEach((input) => {
       input.addEventListener('change', () => {
@@ -869,7 +908,9 @@ import Layout from '../layouts/Layout.astro';
           throw new Error(`Request failed with status ${response.status}`);
         }
 
-        rewardCodeValue.textContent = decodeRewardCode();
+        const rewardCode = decodeRewardCode();
+        rewardCodeValue.textContent = rewardCode;
+        redeemNowButton.href = makeRedeemURL(rewardCode);
         status.classList.add('is-hidden');
         form.hidden = true;
         successPanel.classList.remove('is-hidden');
