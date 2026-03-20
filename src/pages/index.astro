@@ -1313,7 +1313,7 @@ import profilePhoto from '../assets/profile-photo.jpg';
 		}
 	</style>
 	<script>
-		document.addEventListener('DOMContentLoaded', () => {
+		const initNewsletterForm = () => {
 			const form = document.getElementById('newsletterForm');
 			const submitBtn = document.getElementById('newsletterSubmitBtn');
 			const modal = document.getElementById('newsletterStatusModal');
@@ -1322,6 +1322,9 @@ import profilePhoto from '../assets/profile-photo.jpg';
 			const modalOk = document.getElementById('newsletterStatusOk');
 
 			if (!form || !submitBtn || !modal || !modalTitle || !modalMessage || !modalOk) return;
+			if (form.dataset.jsInitialized === 'true') return;
+
+			form.dataset.jsInitialized = 'true';
 
 			const showModal = (title, message) => {
 				modalTitle.textContent = title;
@@ -1368,6 +1371,12 @@ import profilePhoto from '../assets/profile-photo.jpg';
 					submitBtn.textContent = originalLabel || 'Subscribe';
 				}
 			});
-		});
+		};
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', initNewsletterForm, { once: true });
+		} else {
+			initNewsletterForm();
+		}
 	</script>
 </Layout>

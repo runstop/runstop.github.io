@@ -790,7 +790,7 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  const initFeedbackForm = () => {
     const form = document.getElementById('feedbackForm');
     const status = document.getElementById('feedbackFormStatus');
     const successPanel = document.getElementById('feedbackSuccess');
@@ -799,6 +799,9 @@ import Layout from '../layouts/Layout.astro';
     const submitBtn = document.getElementById('feedbackSubmitBtn');
 
     if (!form || !status || !successPanel || !rewardCodeValue || !redeemNowButton || !submitBtn) return;
+    if (form.dataset.jsInitialized === 'true') return;
+
+    form.dataset.jsInitialized = 'true';
 
     const rewardCodeEncoded = 'UFJPRk9DVVM=';
     const appStoreAppId = '1609763784';
@@ -923,5 +926,11 @@ import Layout from '../layouts/Layout.astro';
         submitBtn.textContent = originalLabel || 'Send survey and show my code';
       }
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFeedbackForm, { once: true });
+  } else {
+    initFeedbackForm();
+  }
 </script>
