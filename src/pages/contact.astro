@@ -352,17 +352,6 @@ const t = useTranslations(lang, 'contact');
     };
 
     const urlLikePattern = /\b(?:https?:\/\/|www\.|[a-z0-9-]+(?:\.[a-z0-9-]+)+(?:\/\S*)?)\b/i;
-    const spamPhrasePattern =
-      /\b(?:btc|jackpot|undress|urgent message|important message|web visitors into leads|lead generation|unsubscribe|trial)\b/i;
-
-    const getUppercaseRatio = (value) => {
-      const letters = Array.from(value).filter((character) => /[a-z]/i.test(character));
-      if (letters.length === 0) return 0;
-
-      const uppercaseLetters = letters.filter((character) => character === character.toUpperCase());
-      return uppercaseLetters.length / letters.length;
-    };
-
     const isLikelySpamSubmission = () => {
       const messageField = form.querySelector('#message');
       if (!(messageField instanceof HTMLTextAreaElement)) return false;
@@ -370,10 +359,7 @@ const t = useTranslations(lang, 'contact');
       const message = messageField.value.trim();
       if (!message) return false;
 
-      const hasUrl = urlLikePattern.test(message);
-      if (!hasUrl) return false;
-
-      return spamPhrasePattern.test(message) || getUppercaseRatio(message) >= 0.35;
+      return urlLikePattern.test(message);
     };
 
     const closeModal = () => {
