@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "contact-form-relay",
+  "main": "src/index.js",
+  "compatibility_date": "2026-05-04",
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://artisthegame.com,https://www.artisthegame.com,https://runstop.github.io,http://localhost:4321,http://127.0.0.1:4321"
+  }
+}

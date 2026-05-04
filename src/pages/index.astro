@@ -10,6 +10,11 @@ import screenshot4 from '../assets/screenshot-4.png';
 import screenshot5 from '../assets/screenshot-5.png';
 import screenshot6 from '../assets/screenshot-6.png';
 import profilePhoto from '../assets/profile-photo.jpg';
+
+const turnstileSiteKey = '0x4AAAAAADIz51XGjf6lNRup';
+const contactFormRelayUrl = import.meta.env.PUBLIC_CONTACT_FORM_RELAY_URL || '';
+const newsletterFormAction = contactFormRelayUrl;
+const usesContactFormRelay = Boolean(contactFormRelayUrl);
 ---
 
 <Layout
@@ -214,7 +219,16 @@ import profilePhoto from '../assets/profile-photo.jpg';
 						</div>
 					</div>
 					<div class="newsletter-form-container">
-						<form id="newsletterForm" class="newsletter-form" action="https://formsubmit.co/ajax/pfarnam@icloud.com" method="POST">
+						{usesContactFormRelay && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+
+						<form
+							id="newsletterForm"
+							class="newsletter-form"
+							action={newsletterFormAction}
+							method="POST"
+							data-uses-relay={usesContactFormRelay ? 'true' : 'false'}
+						>
+							<input type="hidden" name="form_type" value="newsletter" />
 							<input type="hidden" name="_subject" value="Artisthegame Newsletter Signup" />
 							<input type="hidden" name="_captcha" value="false" />
 							<input type="hidden" name="source" value="newsletter-homepage" />
@@ -223,6 +237,11 @@ import profilePhoto from '../assets/profile-photo.jpg';
 								<label for="newsletterEmail">Email Address</label>
 								<input type="email" id="newsletterEmail" name="email" placeholder="Enter your email" required>
 							</div>
+							{usesContactFormRelay && (
+								<div class="newsletter-turnstile-wrap">
+									<div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+								</div>
+							)}
 							<button id="newsletterSubmitBtn" type="submit" class="newsletter-submit-btn">Subscribe</button>
 						</form>
 						<p class="newsletter-privacy">
@@ -1170,6 +1189,20 @@ import profilePhoto from '../assets/profile-photo.jpg';
 			margin-bottom: 20px;
 		}
 
+		.newsletter-form[data-uses-relay='true'] {
+			align-items: stretch;
+			flex-direction: column;
+		}
+
+		.newsletter-turnstile-wrap {
+			display: flex;
+			justify-content: center;
+		}
+
+		.newsletter-form[data-uses-relay='true'] .newsletter-submit-btn {
+			width: 100%;
+		}
+
 		.newsletter-form .form-group {
 			flex: 1;
 		}
@@ -1297,6 +1330,10 @@ import profilePhoto from '../assets/profile-photo.jpg';
 				flex-direction: column;
 			}
 
+			.newsletter-turnstile-wrap {
+				width: 100%;
+			}
+
 			.newsletter-submit-btn {
 				width: 100%;
 			}
@@ -1332,6 +1369,11 @@ import profilePhoto from '../assets/profile-photo.jpg';
 				modal.classList.remove('is-hidden');
 			};
 
+			const resetTurnstile = () => {
+				if (form.dataset.usesRelay !== 'true') return;
+				window.turnstile?.reset();
+			};
+
 			const closeModal = () => {
 				modal.classList.add('is-hidden');
 			};
@@ -1364,8 +1406,10 @@ import profilePhoto from '../assets/profile-photo.jpg';
 
 					showModal('Subscription Sent', 'Thanks. Your subscription request was submitted successfully.');
 					form.reset();
+					resetTurnstile();
 				} catch (_error) {
 					showModal('Submit Failed', 'We could not submit your request right now. Please try again in a moment.');
+					resetTurnstile();
 				} finally {
 					submitBtn.disabled = false;
 					submitBtn.textContent = originalLabel || 'Subscribe';

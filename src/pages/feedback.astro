@@ -1,5 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const turnstileSiteKey = '0x4AAAAAADIz51XGjf6lNRup';
+const contactFormRelayUrl = import.meta.env.PUBLIC_CONTACT_FORM_RELAY_URL || '';
+const feedbackFormAction = contactFormRelayUrl;
+const usesContactFormRelay = Boolean(contactFormRelayUrl);
 ---
 
 <Layout
@@ -81,19 +86,23 @@ import Layout from '../layouts/Layout.astro';
             </p>
           </div>
           <p class="privacy-note">
-            Your responses are sent through the same secure FormSubmit flow already used on artisthegame.com. After a
-            successful submission, your reward code appears immediately on this page.
+            Your responses are sent through the secure form flow already used on artisthegame.com. After a successful
+            submission, your reward code appears immediately on this page.
           </p>
         </div>
 
         <p id="feedbackFormStatus" class="form-status is-hidden" role="alert"></p>
 
+        {usesContactFormRelay && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+
         <form
           id="feedbackForm"
           class="feedback-form"
-          action="https://formsubmit.co/ajax/pfarnam@icloud.com"
+          action={feedbackFormAction}
           method="POST"
+          data-uses-relay={usesContactFormRelay ? 'true' : 'false'}
         >
+          <input type="hidden" name="form_type" value="feedback" />
           <input type="hidden" name="_subject" value="Headzone Feedback Survey" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
@@ -248,6 +257,11 @@ import Layout from '../layouts/Layout.astro';
 
           <div class="form-actions">
             <p class="submit-note">Your reward code appears immediately after a successful submission.</p>
+            {usesContactFormRelay && (
+              <div class="turnstile-wrap">
+                <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+              </div>
+            )}
             <button id="feedbackSubmitBtn" type="submit" class="submit-btn">Send survey and show my code</button>
           </div>
         </form>
@@ -689,15 +703,19 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.6;
   }
 
-  .form-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+	  .form-actions {
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
+	    align-items: center;
     gap: 14px;
     padding-top: 6px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
+	    border-top: 1px solid rgba(255, 255, 255, 0.08);
+	  }
+
+	  .turnstile-wrap {
+	    flex: 0 0 auto;
+	  }
 
   .submit-note {
     margin: 0;
@@ -874,8 +892,13 @@ import Layout from '../layouts/Layout.astro';
     };
 
     const decodeRewardCode = () => window.atob(rewardCodeEncoded);
-    const makeRedeemURL = (code) =>
-      `https://apps.apple.com/redeem?ctx=offercodes&id=${encodeURIComponent(appStoreAppId)}&code=${encodeURIComponent(code)}`;
+	    const makeRedeemURL = (code) =>
+	      `https://apps.apple.com/redeem?ctx=offercodes&id=${encodeURIComponent(appStoreAppId)}&code=${encodeURIComponent(code)}`;
+
+	    const resetTurnstile = () => {
+	      if (form.dataset.usesRelay !== 'true') return;
+	      window.turnstile?.reset();
+	    };
 
     otherToggles.forEach((input) => {
       input.addEventListener('change', () => {
@@ -914,14 +937,15 @@ import Layout from '../layouts/Layout.astro';
         const rewardCode = decodeRewardCode();
         rewardCodeValue.textContent = rewardCode;
         redeemNowButton.href = makeRedeemURL(rewardCode);
-        status.classList.add('is-hidden');
-        form.hidden = true;
-        successPanel.classList.remove('is-hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        successPanel.focus();
-      } catch (error) {
-        setStatus('We could not send your survey right now. Please try again in a moment.');
-      } finally {
+	        status.classList.add('is-hidden');
+	        form.hidden = true;
+	        successPanel.classList.remove('is-hidden');
+	        window.scrollTo({ top: 0, behavior: 'smooth' });
+	        successPanel.focus();
+	      } catch (error) {
+	        setStatus('We could not send your survey right now. Please try again in a moment.');
+	        resetTurnstile();
+	      } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel || 'Send survey and show my code';
       }
